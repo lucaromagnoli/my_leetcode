@@ -54,8 +54,3 @@ class Solution:
             return len(max(substrings, key=len))
         return 0
 
-
-sol = Solution()
-s = "pwwkew"
-r = sol.lengthOfLongestSubstring(s)
-print(r)

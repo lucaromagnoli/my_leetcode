@@ -1,5 +1,6 @@
-from typing import Iterable
-
+"""
+Utility module for linked list problems.
+"""
 
 class ListNode:
     def __init__(self, val=0, next_=None):
@@ -21,6 +22,7 @@ class ListNode:
 
 
 def iterable_to_list_node(iterable: list | tuple | str) -> ListNode:
+    """Convert an iterable to a linked list."""
     if iterable:
         root = ListNode(val=iterable[0])
         previous = root
@@ -32,6 +34,7 @@ def iterable_to_list_node(iterable: list | tuple | str) -> ListNode:
 
 
 def linked_list_to_list(node: ListNode) -> list:
+    """Convert a linked list to a list."""
     values = []
     while node:
         values.append(node.val)
