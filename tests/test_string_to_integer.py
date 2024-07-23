@@ -1,6 +1,6 @@
 import pytest
 
-from solutions.string_to_integer_8 import Solution
+from solutions.string_to_integer import Solution
 
 
 @pytest.fixture

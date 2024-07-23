@@ -14,9 +14,3 @@ class Solution:
             root = next_node.next
         return head
 
-
-if __name__ == "__main__":
-    s = Solution()
-    head = iterable_to_list_node([])
-    r = s.swapPairs(head)
-    print(r)
