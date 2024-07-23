@@ -28,6 +28,7 @@ The number of nodes in both lists is in the range [0, 50].
 -100 <= Node.val <= 100
 Both list1 and list2 are sorted in non-decreasing order.
 """
+
 from typing import Optional
 
 from solutions.linked_list import ListNode
@@ -43,7 +44,9 @@ class Solution:
                 destination.next = ListNode("")
                 destination = destination.next
 
-    def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+    def mergeTwoLists(
+        self, list1: Optional[ListNode], list2: Optional[ListNode]
+    ) -> Optional[ListNode]:
         merged = ListNode("")
         next_node = merged
         while list1 and list2:

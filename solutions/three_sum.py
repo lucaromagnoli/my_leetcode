@@ -61,8 +61,3 @@ class Solution:
                     triplets.append(combo)
 
         return triplets
-
-
-solution = Solution()
-r = solution.threeSum([-1, 0, 1, 2, -1, -4])
-print(r)

@@ -86,6 +86,7 @@ Constraints:
 s consists of English letters (lower-case and upper-case), digits (0-9), ' ', '+', '-', and '.'.
 """
 
+
 class Solution:
     def myAtoi(self, s: str) -> int:
         def convert_digits_to_int(digits, neg):
@@ -99,11 +100,11 @@ class Solution:
         negative = False
         last_elem = None
         for i, c in enumerate(chars):
-            if not digits and not c.isnumeric() and c not in ('-', '+', ' '):
+            if not digits and not c.isnumeric() and c not in ("-", "+", " "):
                 return 0
             if len(digits) > 0 and not last_elem.isnumeric():
                 break
-            elif c == '-':
+            elif c == "-":
                 negative = True
             elif c.isnumeric():
                 digits.append(c)

@@ -1,3 +1,6 @@
+from typing import Iterable
+
+
 class ListNode:
     def __init__(self, val=0, next_=None):
         self.val = val
@@ -17,7 +20,7 @@ class ListNode:
         return True
 
 
-def iterable_to_list_node(iterable):
+def iterable_to_list_node(iterable: list | tuple | str) -> ListNode:
     if iterable:
         root = ListNode(val=iterable[0])
         previous = root
@@ -26,3 +29,11 @@ def iterable_to_list_node(iterable):
             previous.next = current
             previous = current
         return root
+
+
+def linked_list_to_list(node: ListNode) -> list:
+    values = []
+    while node:
+        values.append(node.val)
+        node = node.next
+    return values

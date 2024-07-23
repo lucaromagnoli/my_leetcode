@@ -40,6 +40,8 @@ Constraints:
 s consists of English letters (lower-case and upper-case), ',' and '.'.
 1 <= numRows <= 1000
 """
+
+
 class Solution:
 
     @staticmethod
@@ -92,8 +94,6 @@ class Solution:
             column, i = self.get_diagonal(chars, column, i, matrix, row)
 
         return "".join("".join(m) for m in matrix)
-
-
 
 
 sol = Solution()

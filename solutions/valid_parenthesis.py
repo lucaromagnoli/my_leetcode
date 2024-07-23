@@ -22,6 +22,7 @@ Input: s = "(]"
 Output: false
 """
 
+
 class Solution:
     def isValid(self, characters: str) -> bool:
         stack = [characters[0]]
@@ -32,11 +33,16 @@ class Solution:
                 stack.append(current)
             else:
                 previous = stack.pop()
-                if f"{previous}{current}" in ('()', '[]', '{}'):
+                if f"{previous}{current}" in ("()", "[]", "{}"):
                     pass
-                elif (previous == '(' and current in (']', '}') or
-                      previous == '[' and current in (')', '}') or
-                      previous == '{' and current in (')', ']')):
+                elif (
+                    previous == "("
+                    and current in ("]", "}")
+                    or previous == "["
+                    and current in (")", "}")
+                    or previous == "{"
+                    and current in (")", "]")
+                ):
                     return False
                 else:
                     stack.append(previous)

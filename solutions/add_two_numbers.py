@@ -7,14 +7,15 @@ You may assume the two numbers do not contain any leading zero, except the numbe
 
 Example 1:
 
-
 Input: l1 = [2,4,3], l2 = [5,6,4]
 Output: [7,0,8]
 Explanation: 342 + 465 = 807.
+
 Example 2:
 
 Input: l1 = [0], l2 = [0]
 Output: [0]
+
 Example 3:
 
 Input: l1 = [9,9,9,9,9,9,9], l2 = [9,9,9,9]
@@ -27,9 +28,10 @@ The number of nodes in each linked list is in the range [1, 100].
 0 <= Node.val <= 9
 It is guaranteed that the list represents a number that does not have leading zeros.
 """
+
 from typing import Optional
 
-from linked_list import ListNode, iterable_to_list_node
+from solutions.linked_list import ListNode
 
 
 class Solution:
@@ -40,6 +42,7 @@ class Solution:
             while node:
                 yield node.val
                 node = node.next
+
         return list(inner(list_node))
 
     def get_number(self, digits):
@@ -58,13 +61,11 @@ class Solution:
             previous.next = node
             previous = node
         return root
-    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
-        num = self.get_number(self.get_values(l1)) + self.get_number(self.get_values(l2))
+
+    def addTwoNumbers(
+        self, l1: Optional[ListNode], l2: Optional[ListNode]
+    ) -> Optional[ListNode]:
+        num = self.get_number(self.get_values(l1)) + self.get_number(
+            self.get_values(l2)
+        )
         return self.number_to_linked_list(num)
-
-
-
-s = Solution()
-l1, l2 = iterable_to_list_node([2,4,3]), iterable_to_list_node([5,6,4])
-r = s.addTwoNumbers(l1, l2)
-print(r)

@@ -46,6 +46,7 @@ board.length == 9
 board[i].length == 9
 board[i][j] is a digit 1-9 or '.'.
 """
+
 from typing import List
 
 
@@ -62,7 +63,7 @@ class Solution:
     def traverse_quadrants(self, board):
         for row in range(0, 9, 3):
             for col in range(0, 9, 3):
-                quadrant = [board[r][col:col + 3] for r in range(row, row + 3)]
+                quadrant = [board[r][col : col + 3] for r in range(row, row + 3)]
                 yield [i for q in quadrant for i in q]
 
     def is_valid(self, symbols):
@@ -75,22 +76,27 @@ class Solution:
 
     def isValidSudoku(self, board: List[List[str]]) -> bool:
         has_valid_rows = all([self.is_valid(row) for row in self.traverse_rows(board)])
-        has_valid_columns = all([self.is_valid(column) for column in self.traverse_columns(board)])
-        has_valid_quadrants = all([self.is_valid(quadrant) for quadrant in self.traverse_quadrants(board)])
+        has_valid_columns = all(
+            [self.is_valid(column) for column in self.traverse_columns(board)]
+        )
+        has_valid_quadrants = all(
+            [self.is_valid(quadrant) for quadrant in self.traverse_quadrants(board)]
+        )
         return has_valid_rows and has_valid_columns and has_valid_quadrants
 
 
-board = [["8", "3", ".", ".", "7", ".", ".", ".", "."]
-    , ["6", ".", ".", "1", "9", "5", ".", ".", "."]
-    , [".", "9", "8", ".", ".", ".", ".", "6", "."]
-    , ["8", ".", ".", ".", "6", ".", ".", ".", "3"]
-    , ["4", ".", ".", "8", ".", "3", ".", ".", "1"]
-    , ["7", ".", ".", ".", "2", ".", ".", ".", "6"]
-    , [".", "6", ".", ".", ".", ".", "2", "8", "."]
-    , [".", ".", ".", "4", "1", "9", ".", ".", "5"]
-    , [".", ".", ".", ".", "8", ".", ".", "7", "9"]]
+board = [
+    ["8", "3", ".", ".", "7", ".", ".", ".", "."],
+    ["6", ".", ".", "1", "9", "5", ".", ".", "."],
+    [".", "9", "8", ".", ".", ".", ".", "6", "."],
+    ["8", ".", ".", ".", "6", ".", ".", ".", "3"],
+    ["4", ".", ".", "8", ".", "3", ".", ".", "1"],
+    ["7", ".", ".", ".", "2", ".", ".", ".", "6"],
+    [".", "6", ".", ".", ".", ".", "2", "8", "."],
+    [".", ".", ".", "4", "1", "9", ".", ".", "5"],
+    [".", ".", ".", ".", "8", ".", ".", "7", "9"],
+]
 
 
 s = Solution()
 print(s.isValidSudoku(board))
-

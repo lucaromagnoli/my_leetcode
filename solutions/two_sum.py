@@ -32,6 +32,7 @@ Only one valid answer exists.
 
 Follow-up: Can you come up with an algorithm that is less than O(n2) time complexity?
 """
+
 from typing import List
 
 
@@ -40,7 +41,7 @@ class Solution:
         i = 0
         while i < len(nums):
             diff = target - nums[i]
-            if diff in nums[i+1:]:
+            if diff in nums[i + 1 :]:
                 j = i + 1
                 while j < len(nums):
                     if nums[j] == diff:
@@ -50,5 +51,5 @@ class Solution:
 
 
 s = Solution()
-r = s.twoSum([3,2,4], 6)
+r = s.twoSum([3, 2, 4], 6)
 print(r)
