@@ -98,5 +98,3 @@ board = [
 ]
 
 
-s = Solution()
-print(s.isValidSudoku(board))
