@@ -48,8 +48,3 @@ class Solution:
                         return [i, j]
                     j += 1
             i += 1
-
-
-s = Solution()
-r = s.twoSum([3, 2, 4], 6)
-print(r)

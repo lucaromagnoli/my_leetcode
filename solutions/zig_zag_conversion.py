@@ -94,9 +94,3 @@ class Solution:
             column, i = self.get_diagonal(chars, column, i, matrix, row)
 
         return "".join("".join(m) for m in matrix)
-
-
-sol = Solution()
-
-r = sol.convert("PAYPALISHIRING", 3)
-print(r)

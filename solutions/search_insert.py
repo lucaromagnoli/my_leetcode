@@ -51,8 +51,3 @@ class Solution:
         if len(nums) == 1:
             return 0
         return inner(0, len(nums) - 1)
-
-
-solution = Solution()
-r = solution.searchInsert([1, 3, 5, 6], 0)
-print(r)

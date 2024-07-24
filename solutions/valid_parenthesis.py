@@ -51,8 +51,3 @@ class Solution:
         if stack:
             return False
         return True
-
-
-sol = Solution()
-r = sol.isValid("()")
-print(r)

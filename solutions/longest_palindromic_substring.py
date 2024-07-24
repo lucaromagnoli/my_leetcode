@@ -29,16 +29,18 @@ class Solution:
     def longestPalindrome(self, s: str) -> str:
         if not s:
             return ""
-        solutions = []
         i = 0
-        while i < len(s):
+        solution, max_len = None, 0
+        while i < len(s) and i < len(s) - max_len:
             j = len(s)
             while j > i:
                 if s[i:j] == s[i:j][::-1]:
-                    solutions.append(s[i:j])
+                    if max_len is None or len(s[i:j]) > max_len:
+                        max_len = len(s[i:j])
+                        solution = s[i:j]
                     break
                 else:
                     j -= 1
             i += 1
 
-        return max(solutions, key=len)
+        return solution
