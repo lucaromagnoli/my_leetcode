@@ -28,6 +28,7 @@ The number of nodes in the list is sz.
 
 Follow up: Could you do this in one pass?
 """
+
 from typing import Optional
 
 from solutions.linked_list import ListNode
@@ -45,9 +46,8 @@ class Solution:
             node.next = ListNode(val=i)
             node = node.next
         return head
+
     def iter_linked_list(self, node):
         while node:
             yield node.val
             node = node.next
-
-

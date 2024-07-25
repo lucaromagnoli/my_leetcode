@@ -25,6 +25,7 @@ Explanation: The last word is "joyboy" with length 6.
 
 """
 
+
 class Solution:
     def lengthOfLastWord(self, s: str) -> int:
         parts = s.split()

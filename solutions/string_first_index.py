@@ -22,6 +22,7 @@ Constraints:
 haystack and needle consist of only lowercase English characters.
 """
 
+
 class Solution:
 
     def is_substring(self, idx, haystack, needle):
@@ -31,6 +32,7 @@ class Solution:
                 return False
             i += 1
         return True
+
     def strStr(self, haystack: str, needle: str) -> int:
         for i in range(len(haystack)):
             if needle[0] == haystack[i] and len(haystack) - i >= len(needle):

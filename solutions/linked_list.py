@@ -2,6 +2,7 @@
 Utility module for linked list problems.
 """
 
+
 class ListNode:
     def __init__(self, val=0, next_=None):
         self.val = val

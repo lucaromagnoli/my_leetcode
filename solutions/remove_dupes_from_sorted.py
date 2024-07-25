@@ -42,6 +42,7 @@ Constraints:
 -100 <= nums[i] <= 100
 nums is sorted in non-decreasing order.
 """
+
 from typing import List
 
 
@@ -59,4 +60,3 @@ class Solution:
                 previous = nums[i]
             i += 1
         return len(nums)
-
