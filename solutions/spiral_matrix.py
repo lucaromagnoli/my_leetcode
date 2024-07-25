@@ -18,6 +18,7 @@ Constraints:
 
 1 <= n <= 20
 """
+
 from typing import List
 
 
@@ -27,6 +28,6 @@ class Solution:
         directions = ["right", "down", "left", "up"]
         d_idx = 0
         direction = directions[d_idx]
-        for n_idx in range(0, n*n, n):
+        for n_idx in range(0, n * n, n):
             numbers = list(range(n_idx, n_idx + n))
             self.fill_direction(matrix, numbers, direction)

@@ -13,4 +13,3 @@ class Solution:
             previous_node.val, next_node.val = next_node.val, previous_node.val
             root = next_node.next
         return head
-

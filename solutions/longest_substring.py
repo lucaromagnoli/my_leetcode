@@ -53,4 +53,3 @@ class Solution:
         if substrings:
             return len(max(substrings, key=len))
         return 0
-

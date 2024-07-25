@@ -25,4 +25,6 @@ def test_three_sum_finds_all_unique_triplets_that_sum_to_zero(
     solution, nums, expected_output
 ):
     result = solution.threeSum(nums)
-    assert result == expected_output, f"expected {expected_output} but got {result} for input {nums}"
+    assert (
+        result == expected_output
+    ), f"expected {expected_output} but got {result} for input {nums}"

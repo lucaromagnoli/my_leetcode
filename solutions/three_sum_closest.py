@@ -25,6 +25,7 @@ Constraints:
 -1000 <= nums[i] <= 1000
 -104 <= target <= 104
 """
+
 from typing import List
 
 
@@ -44,5 +45,3 @@ class Solution:
                 else:
                     right -= 1
         return closest
-
-

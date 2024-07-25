@@ -2,6 +2,7 @@
 A palindrome is a word or phrase that is the same forwards and backwards. A permutation
 is a rearrangement of letters. The palindrome does not need to be limited to just dictionary words"""
 
+
 class Solution(object):
     def longestPalindrome(self, s):
         """
@@ -35,4 +36,3 @@ class Solution(object):
                     palindromes.append(s[i : j + 1])
 
         return max(palindromes, key=len)
-
