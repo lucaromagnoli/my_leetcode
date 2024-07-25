@@ -43,21 +43,22 @@ class Solution:
             return False
 
         seen = []
-        results = []
 
         @cache
         def backtrack(l, r):
             if l == r:
-                results.append(True)
+                yield True
             if r - l < len(min(word_dict, key=len)):
                 last_word = seen.pop()
                 word_dict.remove(last_word)
                 l = l - len(last_word)
-                results.append(False)
+                yield False
             for word in word_dict:
-                if s[l : l + len(word)] == word:
+                if s[l: l + len(word)] == word:
                     seen.append(word)
-                    backtrack(l + len(word), r)
+                    yield from backtrack(l + len(word), r)
 
-        backtrack(0, len(s))
-        return any(results)
+        for res in backtrack(0, len(s)):
+            if res:
+                return res
+        return False
