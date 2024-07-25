@@ -7,6 +7,7 @@ Example 1:
 
 Input: n = 3
 Output: ["((()))","(()())","(())()","()(())","()()()"]
+
 Example 2:
 
 Input: n = 1
@@ -23,6 +24,7 @@ from typing import List
 import itertools
 
 import itertools
+
 
 class Solution:
     def is_valid_sequence(self, sequence):
@@ -45,12 +47,23 @@ class Solution:
         return not stack
 
     def generateParenthesis(self, n: int) -> List[str]:
-        if not n:
-            return []
-        parenthesis = "()" * n
-        results = [parenthesis]
-        for product in itertools.combinations(parenthesis, len(parenthesis)):
-            results.append("".join(product))
+
+        results = []
+
+        def dfs(open_p, closed_p, string):
+            if open_p == closed_p and open_p + closed_p == n * 2:
+                results.append(string)
+                return
+
+            if open_p < n:
+                dfs(open_p + 1, closed_p, string + "(")
+
+            if closed_p < open_p:
+                dfs(open_p, closed_p + 1, string + ")")
+
+        if n:
+            dfs(0, 0, "")
         return results
 
 
+Solution().generateParenthesis(3)
