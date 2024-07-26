@@ -54,7 +54,7 @@ class Solution:
                 l = l - len(last_word)
                 yield False
             for word in word_dict:
-                if s[l: l + len(word)] == word:
+                if s[l : l + len(word)] == word:
                     seen.append(word)
                     yield from backtrack(l + len(word), r)
 

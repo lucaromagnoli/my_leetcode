@@ -24,9 +24,6 @@ Constraints:
 All the integers of nums are unique.
 """
 
-from functools import cache
-from typing import List
-
 
 class Solution:
     def permute(self, nums):
