@@ -30,6 +30,7 @@ class Solution:
 
         def backtrack(a, size):
             if size == 1:
+                # return a shallow copy since a is mutable
                 yield a[:]
                 return
 
