@@ -11,7 +11,11 @@ def solution():
 @pytest.mark.parametrize(
     "list1, list2, expected",
     [
-        ([1, 2, 4], [1, 3, 4], [1, 1, 2, 3, 4, 4]),  # Both lists with same length
+        (
+            [1, 2, 4],
+            [1, 3, 4],
+            [1, 1, 2, 3, 4, 4],
+        ),  # Both lists with same length
         ([], [], []),  # Both lists empty
         ([], [0], [0]),  # Second list with one element
         ([5], [1, 2, 4], [1, 2, 4, 5]),  # First list with one element

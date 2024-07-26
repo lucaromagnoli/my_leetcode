@@ -18,7 +18,10 @@ def solution():
         ("    ", 0),  # String with only spaces
         ("a ", 1),  # Single character word with trailing space
         ("a" * 1000, 1000),  # Very long single word
-        ("one two three " + "a" * 1000, 1000),  # Long last word with preceding words
+        (
+            "one two three " + "a" * 1000,
+            1000,
+        ),  # Long last word with preceding words
     ],
 )
 def test_length_of_last_word(solution, input_string, expected_length):
