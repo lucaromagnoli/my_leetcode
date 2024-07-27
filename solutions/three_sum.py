@@ -36,10 +36,6 @@ from collections import Counter
 from typing import Iterator
 
 
-from collections import Counter
-from typing import Iterator
-
-
 class Solution:
     def iter_unique_pairs(self, nums_freq: Counter) -> Iterator[list[int]]:
         seen = set()
@@ -54,21 +50,16 @@ class Solution:
 
     def threeSum(self, nums: list[int]) -> list[list[int]]:
         nums = tuple(nums)
-        sums = {}
         results = []
         nums_freq = Counter(nums)
 
         for pair, freq in self.iter_unique_pairs(nums_freq):
             num_sum = sum(pair)
-            sums.setdefault(num_sum, [])
-            sums[num_sum].extend(pair for _ in range(freq))
+            diff = 0 - num_sum
+            if diff in nums_freq:
+                trip = sorted([*pair, diff])
+                trip_counter = Counter(trip)
+                if all(trip_counter[n] <= nums_freq[n] for n in trip_counter) and trip not in results:
+                    results.append(trip)
 
-        for num_val, num_freq in nums_freq.items():
-            diff = 0 - num_val
-            if diff in sums:
-                for pair in sums[diff]:
-                    trip = sorted(pair + (num_val,))
-                    trip_c = Counter(trip)
-                    if all(trip_c[n] <= nums_freq[n] for n in trip) and trip not in results:
-                        results.append(trip)
-        return results
+        return sorted(results)
