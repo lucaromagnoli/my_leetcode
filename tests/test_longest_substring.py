@@ -12,7 +12,10 @@ def solution():
     [
         ("abcabcbb", 3),  # Example 1: no repeating characters
         ("bbbbb", 1),  # Example 2: all characters are the same
-        ("pwwkew", 3),  # Example 3: mix of repeating and non-repeating characters
+        (
+            "pwwkew",
+            3,
+        ),  # Example 3: mix of repeating and non-repeating characters
         ("", 0),  # Empty string
         (" ", 1),  # Single space
         ("au", 2),  # Two distinct characters

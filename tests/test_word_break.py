@@ -12,7 +12,11 @@ def solution():
     [
         ("leetcode", ["leet", "code"], True),  # Example 1
         ("applepenapple", ["apple", "pen"], True),  # Example 2
-        ("catsandog", ["cats", "dog", "sand", "and", "cat"], False),  # Example 3
+        (
+            "catsandog",
+            ["cats", "dog", "sand", "and", "cat"],
+            False,
+        ),  # Example 3
         ("", ["a", "b"], False),  # Edge case: empty string
         ("a", [], False),  # Edge case: empty dictionary
         ("a", ["a"], True),  # Single character match
