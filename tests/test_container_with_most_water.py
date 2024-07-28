@@ -2,7 +2,7 @@ import json
 import timeit
 
 import pytest
-from solutions.containers import Solution
+from solutions.container_with_most_water import Solution
 
 
 @pytest.fixture

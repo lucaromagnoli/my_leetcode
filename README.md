@@ -6,3 +6,5 @@ All the solutions in `/solutions` are written by me with co-pilot off and are no
 Solutions in `/other` have not been solved by me, I have only rewritten the solution for educational purposes.
 
 Tests have been written with the help of co-pilot.
+
+There is a script `leetcode.py` that can be used to create a new problem file with the problem description and test cases.

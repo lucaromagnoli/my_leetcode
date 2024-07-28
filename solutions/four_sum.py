@@ -1,4 +1,8 @@
 """
+https://leetcode.com/problems/4sum/
+Title: 4Sum
+No: 18
+
 Given an array nums of n integers, return an array of all the unique quadruplets [nums[a], nums[b], nums[c], nums[d]] such that:
 
 0 <= a, b, c, d < n
@@ -64,11 +68,4 @@ class Solution:
                         and quad not in results
                     ):
                         results.append(quad)
-
         return sorted(results)
-
-
-if __name__ == "__main__":
-    sol = Solution()
-    print(sol.fourSum([1, 0, -1, 0, -2, 2], 0))  # [[-2,-1,1,2],[-2,0,0,2],[-1,0,0,1]]
-    print(sol.fourSum([2, 2, 2, 2, 2], 8))  # [[2,2,2,2]]
