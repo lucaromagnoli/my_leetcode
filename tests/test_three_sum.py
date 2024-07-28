@@ -1,4 +1,5 @@
 import json
+import timeit
 
 import pytest
 from solutions.three_sum import Solution
@@ -21,7 +22,7 @@ def solution():
         ([-1, 0, 1], [[-1, 0, 1]]),
         ([1, 2, -2, -1], []),
         ([-1, -1, -1, 2], [[-1, -1, 2]]),
-    ][:],
+    ],
 )
 def test_three_sum_finds_all_unique_triplets_that_sum_to_zero(
     solution, nums, expected_output
@@ -38,8 +39,8 @@ def large_input(shared_datadir):
     with open(shared_datadir / "three_sum1.json") as f:
         return json.load(f)
 
-# def test_timeout(large_input, solution):
-#     solution.threeSum(large_input)
-
+def test_timeout(large_input, solution):
+    r = timeit.timeit(lambda: solution.threeSum(large_input), number=1)
+    assert r < 10, f"Execution time: {r} seconds"
 
 

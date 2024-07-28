@@ -32,34 +32,28 @@ Constraints:
 3 <= nums.length <= 3000
 -105 <= nums[i] <= 105
 """
-from collections import Counter
-from typing import Iterator
-
+from typing import Iterator, List
 
 class Solution:
-    def iter_unique_pairs(self, nums_freq: Counter) -> Iterator[list[int]]:
-        seen = set()
-        for i_val, i_frq in nums_freq.items():
-            for j_val, j_frq in nums_freq.items():
-                if not (i_val == j_val and i_frq == j_frq == 1):
-                    pair = (i_val, j_val) if i_val <= j_val else (j_val, i_val)
-                    if pair not in seen:
-                        seen.add(pair)
-                        freq = i_frq - 1 if i_val == j_val else i_frq * j_frq
-                        yield pair, freq
-
     def threeSum(self, nums: list[int]) -> list[list[int]]:
-        nums = tuple(nums)
+        nums = sorted(nums)
         results = []
-        nums_freq = Counter(nums)
-
-        for pair, freq in self.iter_unique_pairs(nums_freq):
-            num_sum = sum(pair)
-            diff = 0 - num_sum
-            if diff in nums_freq:
-                trip = sorted([*pair, diff])
-                trip_counter = Counter(trip)
-                if all(trip_counter[n] <= nums_freq[n] for n in trip_counter) and trip not in results:
-                    results.append(trip)
-
-        return sorted(results)
+        for i in range(len(nums) - 2):
+            if i > 0 and nums[i] == nums[i - 1]:
+                continue
+            left, right = i + 1, len(nums) - 1
+            while left < right:
+                total = nums[i] + nums[left] + nums[right]
+                if total == 0:
+                    results.append([nums[i], nums[left], nums[right]])
+                    while left < right and nums[left] == nums[left + 1]:
+                        left += 1
+                    while left < right and nums[right] == nums[right - 1]:
+                        right -= 1
+                    left += 1
+                    right -= 1
+                elif total < 0:
+                    left += 1
+                else:
+                    right -= 1
+        return results
