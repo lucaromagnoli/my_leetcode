@@ -1,5 +1,5 @@
 import pytest
-from other_solutions.sudoku_solver import Solution
+from other.sudoku_solver import Solution
 
 @pytest.fixture
 def solution():
