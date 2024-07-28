@@ -1,9 +1,11 @@
 import pytest
 from solutions.count_and_say import Solution
 
+
 @pytest.fixture
 def solution():
     return Solution()
+
 
 @pytest.mark.parametrize(
     "n, expected",

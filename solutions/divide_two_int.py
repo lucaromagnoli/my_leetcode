@@ -26,11 +26,17 @@ Constraints:
 -231 <= dividend, divisor <= 231 - 1
 divisor != 0
 """
+
+
 class Solution:
     def divide(self, dividend: int, divisor: int) -> int:
         if divisor == 0:
             return 0
-        sign = 1 if (dividend >= 0 and divisor >= 0) or (dividend < 0 and divisor < 0) else - 1
+        sign = (
+            1
+            if (dividend >= 0 and divisor >= 0) or (dividend < 0 and divisor < 0)
+            else -1
+        )
         result = 0
         if abs(divisor) == 1:
             result = abs(dividend)

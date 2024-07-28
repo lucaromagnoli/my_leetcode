@@ -24,6 +24,7 @@ Constraints:
 -109 <= nums[i] <= 109
 -109 <= target <= 109
 """
+
 from collections import Counter
 from typing import Iterator
 
@@ -58,12 +59,13 @@ class Solution:
                 for other_pair in sums[num_diff]:
                     quad = sorted([*pair, *other_pair])
                     quad_counter = Counter(quad)
-                    if all(quad_counter[n] <= nums_freq[n] for n in quad_counter) and quad not in results:
+                    if (
+                        all(quad_counter[n] <= nums_freq[n] for n in quad_counter)
+                        and quad not in results
+                    ):
                         results.append(quad)
 
         return sorted(results)
-
-
 
 
 if __name__ == "__main__":

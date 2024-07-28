@@ -1,9 +1,11 @@
 import pytest
 from solutions.divide_two_int import Solution
 
+
 @pytest.fixture
 def solution():
     return Solution()
+
 
 @pytest.mark.parametrize(
     "dividend, divisor, expected",
@@ -14,9 +16,16 @@ def solution():
         pytest.param(1, 1, 1, id="Dividend equals divisor"),
         pytest.param(-10, -3, 3, id="Both negative"),
         pytest.param(2**31 - 1, 1, 2**31 - 1, id="Maximum positive dividend"),
-        pytest.param(-2**31, 1, -2**31, id="Minimum negative dividend"),
-        pytest.param(2**31 - 1, -1, -(2**31 - 1), id="Maximum positive dividend with negative divisor"),
-        pytest.param(-2**31, -1, 2**31, id="Minimum negative dividend with negative divisor"),
+        pytest.param(-(2**31), 1, -(2**31), id="Minimum negative dividend"),
+        pytest.param(
+            2**31 - 1,
+            -1,
+            -(2**31 - 1),
+            id="Maximum positive dividend with negative divisor",
+        ),
+        pytest.param(
+            -(2**31), -1, 2**31, id="Minimum negative dividend with negative divisor"
+        ),
     ],
 )
 def test_divides_correctly(solution, dividend, divisor, expected):

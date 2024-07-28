@@ -4,9 +4,11 @@ import timeit
 import pytest
 from solutions.containers import Solution
 
+
 @pytest.fixture
 def solution():
     return Solution()
+
 
 @pytest.mark.parametrize(
     "height, expected",

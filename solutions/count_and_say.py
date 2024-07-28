@@ -40,6 +40,8 @@ Constraints:
 
 Follow up: Could you solve it iteratively?
 """
+
+
 class Solution:
 
     def rle(self, n_str: str) -> str:
@@ -47,15 +49,16 @@ class Solution:
         res = ""
         while i < len(n_str):
             counter = 1
-            while i + 1 < len(n_str) and n_str[i] == n_str[i+1]:
+            while i + 1 < len(n_str) and n_str[i] == n_str[i + 1]:
                 counter += 1
                 i += 1
             else:
                 res = f"{res}{counter}{n_str[i]}"
                 i += 1
         return res
+
     def countAndSay(self, num: int) -> str:
-        sol = '1'
+        sol = "1"
         for _ in range(1, num):
             sol = self.rle(sol)
         return sol

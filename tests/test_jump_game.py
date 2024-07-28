@@ -1,9 +1,11 @@
 import pytest
 from solutions.jump_game import Solution
 
+
 @pytest.fixture
 def solution():
     return Solution()
+
 
 @pytest.mark.parametrize(
     "nums, expected",

@@ -30,7 +30,7 @@ def test_three_sum_finds_all_unique_triplets_that_sum_to_zero(
     result = sorted([sorted(r) for r in solution.threeSum(nums)])
     expected_output = sorted([sorted(r) for r in expected_output])
     assert (
-            result == expected_output
+        result == expected_output
     ), f"expected {expected_output} but got {result} for input {nums}"
 
 
@@ -39,8 +39,7 @@ def large_input(shared_datadir):
     with open(shared_datadir / "three_sum1.json") as f:
         return json.load(f)
 
+
 def test_timeout(large_input, solution):
     r = timeit.timeit(lambda: solution.threeSum(large_input), number=1)
     assert r < 10, f"Execution time: {r} seconds"
-
-

@@ -26,7 +26,9 @@ Constraints:
 
 1 <= n <= 45
 """
+
 from functools import cache
+
 
 class Solution:
     def climbStairs(self, steps: int) -> int:
@@ -35,6 +37,6 @@ class Solution:
         def climb(n):
             if n in [0, 1]:
                 return 1
-            return climb(n-1) + climb(n-2)
-        return climb(steps)
+            return climb(n - 1) + climb(n - 2)
 
+        return climb(steps)

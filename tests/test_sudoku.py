@@ -1,9 +1,11 @@
 import pytest
 from other.sudoku_solver import Solution
 
+
 @pytest.fixture
 def solution():
     return Solution()
+
 
 @pytest.mark.parametrize(
     "board, expected",
@@ -31,7 +33,7 @@ def solution():
                 ["2", "8", "7", "4", "1", "9", "6", "3", "5"],
                 ["3", "4", "5", "2", "8", "6", "1", "7", "9"],
             ],
-            id="Example 1"
+            id="Example 1",
         ),
         pytest.param(
             [
@@ -56,7 +58,7 @@ def solution():
                 ["8", "3", "2", "4", "9", "1", "7", "5", "6"],
                 ["6", "4", "1", "2", "7", "5", "9", "8", "3"],
             ],
-            id="Example 2"
+            id="Example 2",
         ),
         pytest.param(
             [
@@ -82,7 +84,7 @@ def solution():
                 ["9", "1", "2", "3", "4", "5", "6", "7", "8"],
             ],
             id="Empty board",
-            marks=pytest.mark.xfail(reason="Calculates a different result")
+            marks=pytest.mark.xfail(reason="Calculates a different result"),
         ),
     ],
 )

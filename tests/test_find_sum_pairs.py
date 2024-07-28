@@ -3,22 +3,25 @@ import json
 import pytest
 from solutions.find_sum_pairs import FindSumPairs
 
+
 @pytest.fixture
 def find_sum_pairs():
     return FindSumPairs([1, 1, 2, 2, 2, 3], [1, 4, 5, 2, 5, 4])
+
 
 @pytest.mark.parametrize(
     "pairs, tot, expected",
     [
         (FindSumPairs([1, 1, 2, 2, 2, 3], [1, 4, 5, 2, 5, 4]), 7, 8),
-        (FindSumPairs([1, 1, 2, 2, 2, 3], [1,4,5,4,5,4]), 8, 2),
-        (FindSumPairs([1,1,2,2,2,3],[1,4,5,2,5,4]), 7, 8),
-        (FindSumPairs([1,1,2,2,2,3],[1,4,5,4,5,4]), 8, 2),
+        (FindSumPairs([1, 1, 2, 2, 2, 3], [1, 4, 5, 4, 5, 4]), 8, 2),
+        (FindSumPairs([1, 1, 2, 2, 2, 3], [1, 4, 5, 2, 5, 4]), 7, 8),
+        (FindSumPairs([1, 1, 2, 2, 2, 3], [1, 4, 5, 4, 5, 4]), 8, 2),
     ],
 )
 def test_counts_correctly(pairs, tot, expected):
     result = pairs.count(tot)
     assert result == expected
+
 
 def test_adds_correctly(find_sum_pairs):
     find_sum_pairs.add(3, 2)
