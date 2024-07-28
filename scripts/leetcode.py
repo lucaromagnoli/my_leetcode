@@ -96,7 +96,7 @@ def write_solution_file(title, base_path="solutions") -> Path:
     file_content += f"No: {metadata['no']}\n"
     file_content += f"Difficulty: {metadata['difficulty']}\n"
     file_content += f"Category: {metadata['category']}\n"
-    file_content += f"Problem:\n{content}\n\n"
+    file_content += f"Problem:\n{content}\n"
     file_content += '"""\n'
     file_content += snippet
     write_file(file_content, sol_fpath)
