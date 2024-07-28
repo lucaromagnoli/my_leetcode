@@ -1,7 +1,7 @@
 import json
 
 import pytest
-from solutions.find_sum_pairs import FindSumPairs
+from solutions.find_pairs_with_a_certain_sum import FindSumPairs
 
 
 @pytest.fixture

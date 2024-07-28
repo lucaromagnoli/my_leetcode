@@ -4,9 +4,9 @@ Utility module for linked list problems.
 
 
 class ListNode:
-    def __init__(self, val=0, next_=None):
+    def __init__(self, val=0, next=None):
         self.val = val
-        self.next = next_
+        self.next = next
 
     def __repr__(self):
         return f"ListNode(val={self.val}, next={self.next})"
