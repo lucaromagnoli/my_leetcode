@@ -34,4 +34,5 @@ class Solution:
                 area = (r_idx - l_idx) * min(l_val, r_val)
                 if max_area is None or area > max_area:
                     max_area = area
+                r_idx -= 1
         return max_area or 0
