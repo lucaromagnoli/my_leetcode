@@ -20,7 +20,6 @@ class Solution:
                 for j in range(9):
                     if board[i][j] == ".":
                         for num in range(1, 10):
-
                             if self.can_be_placed(board, i, j, str(num)):
                                 board[i][j] = str(num)
                                 if solve():
