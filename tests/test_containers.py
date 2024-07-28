@@ -1,3 +1,6 @@
+import json
+import timeit
+
 import pytest
 from solutions.containers import Solution
 
@@ -19,8 +22,24 @@ def solution():
         ([1, 3, 2, 5, 25, 24, 5], 24),  # Large peak near the end
         ([1], 0),  # Single element
         ([], 0),  # Empty list
-    ],
+    ][:],
 )
 def test_calculates_max_area(solution, height, expected):
     result = solution.maxArea(height)
     assert result == expected
+
+
+@pytest.fixture
+def large_input(shared_datadir, request):
+    with open(shared_datadir / request.param) as f:
+        return json.load(f)
+
+
+@pytest.mark.parametrize(
+    "large_input",
+    ["large_area_input1.json"],
+    indirect=True,
+)
+def test_large(large_input):
+    r = timeit.timeit(lambda: Solution().maxArea(large_input), number=1)
+    assert r < 0.1, f"Execution time: {r} seconds"
