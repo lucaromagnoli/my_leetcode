@@ -2,6 +2,8 @@
 https://leetcode.com/problems/find-pairs-with-a-certain-sum/
 Title: Finding Pairs With a Certain Sum
 No: 1865
+Difficulty: Medium
+Category: Algorithms
 Problem:
 You are given two integer arrays nums1 and nums2. You are tasked to implement a data structure that supports queries of two types:
 

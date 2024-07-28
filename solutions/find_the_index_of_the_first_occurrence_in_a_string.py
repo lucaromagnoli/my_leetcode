@@ -2,6 +2,8 @@
 https://leetcode.com/problems/implement-strstr/
 Title: Implement strStr()
 No: 28
+Difficulty: Easy
+Category: Algorithms
 Problem:
 Given two strings needle and haystack, return the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
  

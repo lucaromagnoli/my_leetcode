@@ -90,22 +90,29 @@ def write_solution_file(title, base_path="solutions") -> Path:
     }
     editor_data = fetch_question_editor_data(title)
     snippet = get_snippet(editor_data)
-    write_file('"""\n', sol_fpath, mode="a")
-    write_file(f"https://leetcode.com/problems/{title}/\n", sol_fpath, mode="a")
-    write_file(f"Title: {metadata['title']}\n", sol_fpath, mode="a")
-    write_file(f"No: {metadata['no']}\n", sol_fpath, mode="a")
-    write_file(f"Problem:\n{content}\n\n", sol_fpath, mode="a")
-    write_file(snippet, sol_fpath, mode="a")
+    file_content = '"""\n'
+    file_content += f"https://leetcode.com/problems/{title}/\n"
+    file_content += f"Title: {metadata['title']}\n"
+    file_content += f"No: {metadata['no']}\n"
+    file_content += f"Difficulty: {metadata['difficulty']}\n"
+    file_content += f"Category: {metadata['category']}\n"
+    file_content += f"Problem:\n{content}\n\n"
+    file_content += '"""\n'
+    file_content += snippet
+    write_file(file_content, sol_fpath)
     return sol_fpath
 
 
 def write_test_file(title, base_path="tests") -> Path:
     test_fpath = Path.cwd().parent / base_path / f"test_{title.replace('-', '_')}.py"
     test_fpath.parent.mkdir(parents=True, exist_ok=True)
+    write_file("", test_fpath)
     return test_fpath
 
 
-def get_problem(title: str, solutions_path: str = 'solutions', tests_path: str = 'tests') -> None:
+def get_problem(
+    title: str, solutions_path: str = "solutions", tests_path: str = "tests"
+) -> None:
     """
     Main function to fetch and write the LeetCode question content and code snippet to files.
     """
@@ -115,7 +122,7 @@ def get_problem(title: str, solutions_path: str = 'solutions', tests_path: str =
     print(f"Files created: {sol_fpath}, {test_fpath}")
 
 
-def main():
+def main(solutions_path: str = "solutions", tests_path: str = "tests") -> None:
     urls = [
         "https://leetcode.com/problems/two-sum",
         "https://leetcode.com/problems/add-two-numbers",
@@ -157,8 +164,8 @@ def main():
         "https://leetcode.com/problems/sort-the-people",
     ]
     for url in urls:
-        get_problem(url.split("/")[-1])
+        get_problem(url.split("/")[-1], solutions_path, tests_path)
 
 
 if __name__ == "__main__":
-    main()
+    main("new_solutions", "new_tests")

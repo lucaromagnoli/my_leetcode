@@ -2,6 +2,8 @@
 https://leetcode.com/problems/integer-to-roman/
 Title: Integer to Roman
 No: 12
+Difficulty: Medium
+Category: Algorithms
 Problem:
 Seven different symbols represent Roman numerals with the following values:
 

@@ -2,6 +2,8 @@
 https://leetcode.com/problems/count-and-say/
 Title: Count and Say
 No: 38
+Difficulty: Easy
+Category: Algorithms
 Problem:
 The count-and-say sequence is a sequence of digit strings defined by the recursive formula:
 
