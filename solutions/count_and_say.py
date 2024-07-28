@@ -54,12 +54,8 @@ class Solution:
                 res = f"{res}{counter}{n_str[i]}"
                 i += 1
         return res
-
     def countAndSay(self, num: int) -> str:
-        def inner(n):
-            if n == 1:
-                return '1'
-            else:
-                return self.rle(inner(n - 1))
-
-        return inner(num)
+        sol = '1'
+        for _ in range(1, num):
+            sol = self.rle(sol)
+        return sol
