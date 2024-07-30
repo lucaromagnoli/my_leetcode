@@ -1,4 +1,10 @@
 """
+https://leetcode.com/problems/4sum/
+Title: 4Sum
+No: 18
+Difficulty: Medium
+Category: Algorithms
+Problem:
 Given an array nums of n integers, return an array of all the unique quadruplets [nums[a], nums[b], nums[c], nums[d]] such that:
 
 0 <= a, b, c, d < n
@@ -24,6 +30,7 @@ Constraints:
 -109 <= nums[i] <= 109
 -109 <= target <= 109
 """
+
 from collections import Counter
 from typing import Iterator
 
@@ -58,15 +65,9 @@ class Solution:
                 for other_pair in sums[num_diff]:
                     quad = sorted([*pair, *other_pair])
                     quad_counter = Counter(quad)
-                    if all(quad_counter[n] <= nums_freq[n] for n in quad_counter) and quad not in results:
+                    if (
+                        all(quad_counter[n] <= nums_freq[n] for n in quad_counter)
+                        and quad not in results
+                    ):
                         results.append(quad)
-
         return sorted(results)
-
-
-
-
-if __name__ == "__main__":
-    sol = Solution()
-    print(sol.fourSum([1, 0, -1, 0, -2, 2], 0))  # [[-2,-1,1,2],[-2,0,0,2],[-1,0,0,1]]
-    print(sol.fourSum([2, 2, 2, 2, 2], 8))  # [[2,2,2,2]]
