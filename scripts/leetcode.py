@@ -118,54 +118,17 @@ def get_problem(
     """
     sol_fpath = write_solution_file(title, solutions_path)
     test_fpath = write_test_file(title, tests_path)
-
     print(f"Files created: {sol_fpath}, {test_fpath}")
 
 
-def main(solutions_path: str = "solutions", tests_path: str = "tests") -> None:
-    urls = [
-        "https://leetcode.com/problems/two-sum",
-        "https://leetcode.com/problems/add-two-numbers",
-        "https://leetcode.com/problems/longest-substring-without-repeating-characters",
-        "https://leetcode.com/problems/longest-palindromic-substring",
-        "https://leetcode.com/problems/zigzag-conversion",
-        "https://leetcode.com/problems/reverse-integer",
-        "https://leetcode.com/problems/palindrome-number",
-        "https://leetcode.com/problems/container-with-most-water",
-        "https://leetcode.com/problems/integer-to-roman",
-        "https://leetcode.com/problems/roman-to-integer",
-        "https://leetcode.com/problems/longest-common-prefix",
-        "https://leetcode.com/problems/3sum",
-        "https://leetcode.com/problems/3sum-closest",
-        "https://leetcode.com/problems/letter-combinations-of-a-phone-number",
-        "https://leetcode.com/problems/4sum",
-        "https://leetcode.com/problems/remove-nth-node-from-end-of-list",
-        "https://leetcode.com/problems/valid-parentheses",
-        "https://leetcode.com/problems/merge-two-sorted-lists",
-        "https://leetcode.com/problems/swap-nodes-in-pairs",
-        "https://leetcode.com/problems/remove-duplicates-from-sorted-array",
-        "https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string",
-        "https://leetcode.com/problems/search-in-rotated-sorted-array",
-        "https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array",
-        "https://leetcode.com/problems/search-insert-position",
-        "https://leetcode.com/problems/valid-sudoku",
-        "https://leetcode.com/problems/sudoku-solver",
-        "https://leetcode.com/problems/count-and-say",
-        "https://leetcode.com/problems/combination-sum",
-        "https://leetcode.com/problems/multiply-strings",
-        "https://leetcode.com/problems/permutations",
-        "https://leetcode.com/problems/n-queens",
-        "https://leetcode.com/problems/jump-game",
-        "https://leetcode.com/problems/length-of-last-word",
-        "https://leetcode.com/problems/climbing-stairs",
-        "https://leetcode.com/problems/word-break",
-        "https://leetcode.com/problems/lucky-numbers-in-a-matrix",
-        "https://leetcode.com/problems/finding-pairs-with-a-certain-sum",
-        "https://leetcode.com/problems/sort-the-people",
-    ]
-    for url in urls:
-        get_problem(url.split("/")[-1], solutions_path, tests_path)
+def main(title: str, solutions_path: str = "solutions", tests_path: str = "tests") -> None:
+    get_problem(title, solutions_path, tests_path)
 
 
 if __name__ == "__main__":
-    main("new_solutions", "new_tests")
+    argparse = argparse.ArgumentParser()
+    argparse.add_argument("title", type=str, help="Title of the LeetCode problem", nargs="?")
+    argparse.add_argument("--solutions", type=str, default="solutions", help="Path to solutions")
+    argparse.add_argument("--tests", type=str, default="tests", help="Path to tests")
+    args = argparse.parse_args()
+    main(args.title, args.solutions, args.tests)
