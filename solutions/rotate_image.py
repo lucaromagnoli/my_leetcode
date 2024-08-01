@@ -41,7 +41,9 @@ class Solution(object):
         :type matrix: List[List[int]]
         :rtype: None Do not return anything, modify matrix in-place instead.
         """
-        for i, column in enumerate(self.iter_reverse_columns([row[:] for row in matrix])):
+        for i, column in enumerate(
+            self.iter_reverse_columns([row[:] for row in matrix])
+        ):
             for j, v in enumerate(column):
                 matrix[i][j] = v
         return matrix
