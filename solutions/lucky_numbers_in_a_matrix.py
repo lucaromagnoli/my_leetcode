@@ -35,8 +35,10 @@ n == mat[i].length
 1 <= matrix[i][j] <= 105.
 All elements in the matrix are distinct.
 """
+
+
 class Solution:
-    def luckyNumbers (self, matrix: list[list[int]]) -> list[int]:
+    def luckyNumbers(self, matrix: list[list[int]]) -> list[int]:
         def is_lucky(idx_i, idx_j):
             num = matrix[idx_i][idx_j]
             is_min_in_row = num == min(matrix[idx_i])

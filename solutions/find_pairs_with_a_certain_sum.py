@@ -49,6 +49,7 @@ At most 1000 calls are made to add and count each.
 
 
 """
+
 from collections import Counter
 from typing import List
 import numpy as np
@@ -104,7 +105,11 @@ class FindSumPairs(object):
         counter = 0
         filtered_map1 = self.filter_frequency_map(self.nums1_freq_map, tot)
         filtered_map2 = self.filter_frequency_map(self.nums2_freq_map, tot)
-        smallest_map, largest_map = filtered_map1 if len(filtered_map1) <= len(filtered_map2) else filtered_map2, filtered_map2 if len(filtered_map1) <= len(filtered_map2) else filtered_map1
+        smallest_map, largest_map = (
+            filtered_map1 if len(filtered_map1) <= len(filtered_map2) else filtered_map2
+        ), (
+            filtered_map2 if len(filtered_map1) <= len(filtered_map2) else filtered_map1
+        )
         for n1, n1_freq in smallest_map.items():
             diff = tot - n1
             if diff in largest_map:

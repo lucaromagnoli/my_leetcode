@@ -2,6 +2,7 @@ import pytest
 from solutions.linked_list_cycle import Solution
 from utils.data_structures import ListNode
 
+
 @pytest.fixture
 def create_linked_list():
     def _create_linked_list(values, pos):
@@ -18,22 +19,31 @@ def create_linked_list():
         if pos != -1:
             current.next = cycle_node
         return head
+
     return _create_linked_list
 
-@pytest.mark.parametrize("values, pos, expected", [
-    ([3, 2, 0, -4], 1, True),
-    ([1], -1, False),
-])
+
+@pytest.mark.parametrize(
+    "values, pos, expected",
+    [
+        ([3, 2, 0, -4], 1, True),
+        ([1], -1, False),
+    ],
+)
 def test_has_cycle_correctness(create_linked_list, values, pos, expected):
     head = create_linked_list(values, pos)
     solution = Solution()
     assert solution.hasCycle(head) == expected
 
-@pytest.mark.parametrize("values, pos, expected", [
-    ([], -1, False),
-    ([1, 2, 3, 4, 5], -1, False),
-    ([1, 2, 3, 4, 5], 4, True),
-])
+
+@pytest.mark.parametrize(
+    "values, pos, expected",
+    [
+        ([], -1, False),
+        ([1, 2, 3, 4, 5], -1, False),
+        ([1, 2, 3, 4, 5], 4, True),
+    ],
+)
 def test_has_cycle_edge_cases(create_linked_list, values, pos, expected):
     head = create_linked_list(values, pos)
     solution = Solution()

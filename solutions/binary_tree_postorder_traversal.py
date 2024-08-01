@@ -32,6 +32,7 @@ The number of the nodes in the tree is in the range [0, 100].
  
 Follow up: Recursive solution is trivial, could you do it iteratively?
 """
+
 from typing import Optional, List
 
 from utils.data_structures import TreeNode
@@ -47,13 +48,13 @@ class Solution(object):
     def postorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
         tree = root
         solutions = []
+
         def inner(node):
             if node is None:
                 return
             inner(node.left)
             inner(node.right)
             solutions.append(node.val)
+
         inner(tree)
         return solutions
-
-        

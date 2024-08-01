@@ -30,6 +30,8 @@ Constraints:
 
 
 """
+
+
 class Solution:
     def mySqrt(self, num: int) -> int:
 
@@ -46,5 +48,3 @@ class Solution:
         if num in [0, 1]:
             return num
         return inner(1, 2)
-
-        

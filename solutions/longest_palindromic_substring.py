@@ -27,6 +27,8 @@ s consist of only digits and English letters.
 
 
 """
+
+
 class Solution:
     def longestPalindrome(self, s: str) -> str:
         if not s:
@@ -46,5 +48,3 @@ class Solution:
             i += 1
 
         return solution
-
-        

@@ -28,6 +28,7 @@ Constraints:
 Follow up: Could you optimize your algorithm to use only O(rowIndex) extra space?
 
 """
+
 from typing import List
 
 
@@ -41,8 +42,7 @@ class Solution:
                 if i in [0, idx]:
                     current.append(1)
                 else:
-                    current.append(previous[i-1] + previous[i])
+                    current.append(previous[i - 1] + previous[i])
             return inner(idx + 1, current)
+
         return inner(1, [1])
-
-

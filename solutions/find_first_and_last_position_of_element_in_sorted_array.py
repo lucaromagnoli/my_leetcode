@@ -27,6 +27,8 @@ Constraints:
 nums is a non-decreasing array.
 -109 <= target <= 109
 """
+
+
 class Solution:
     def searchRange(self, nums: list[int], target: int) -> list[int]:
         if not nums or target not in nums:

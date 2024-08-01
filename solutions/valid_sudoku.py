@@ -54,6 +54,8 @@ board.length == 9
 board[i].length == 9
 board[i][j] is a digit 1-9 or '.'.
 """
+
+
 class Solution:
 
     def traverse_rows(self, board):
@@ -67,7 +69,7 @@ class Solution:
     def traverse_quadrants(self, board):
         for row in range(0, 9, 3):
             for col in range(0, 9, 3):
-                quadrant = [board[r][col:col + 3] for r in range(row, row + 3)]
+                quadrant = [board[r][col : col + 3] for r in range(row, row + 3)]
                 yield [i for q in quadrant for i in q]
 
     def is_valid(self, symbols):
@@ -80,6 +82,10 @@ class Solution:
 
     def isValidSudoku(self, board: list[list[str]]) -> bool:
         has_valid_rows = all([self.is_valid(row) for row in self.traverse_rows(board)])
-        has_valid_columns = all([self.is_valid(column) for column in self.traverse_columns(board)])
-        has_valid_quadrants = all([self.is_valid(quadrant) for quadrant in self.traverse_quadrants(board)])
+        has_valid_columns = all(
+            [self.is_valid(column) for column in self.traverse_columns(board)]
+        )
+        has_valid_quadrants = all(
+            [self.is_valid(quadrant) for quadrant in self.traverse_quadrants(board)]
+        )
         return has_valid_rows and has_valid_columns and has_valid_quadrants

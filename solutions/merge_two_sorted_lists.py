@@ -35,6 +35,7 @@ Both list1 and list2 are sorted in non-decreasing order.
 
 
 """
+
 from typing import Optional
 
 
@@ -43,6 +44,7 @@ class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
+
 
 class Solution:
 
@@ -54,7 +56,9 @@ class Solution:
                 destination.next = ListNode("")
                 destination = destination.next
 
-    def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+    def mergeTwoLists(
+        self, list1: Optional[ListNode], list2: Optional[ListNode]
+    ) -> Optional[ListNode]:
         merged = ListNode("")
         next_node = merged
         while list1 and list2:
@@ -81,5 +85,3 @@ class Solution:
             self.drain_list(list2, next_node)
 
         return merged
-
-        

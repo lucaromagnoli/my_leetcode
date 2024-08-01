@@ -121,14 +121,20 @@ def get_problem(
     print(f"Files created: {sol_fpath}, {test_fpath}")
 
 
-def main(title: str, solutions_path: str = "solutions", tests_path: str = "tests") -> None:
+def main(
+    title: str, solutions_path: str = "solutions", tests_path: str = "tests"
+) -> None:
     get_problem(title, solutions_path, tests_path)
 
 
 if __name__ == "__main__":
     argparse = argparse.ArgumentParser()
-    argparse.add_argument("title", type=str, help="Title of the LeetCode problem", nargs="?")
-    argparse.add_argument("--solutions", type=str, default="solutions", help="Path to solutions")
+    argparse.add_argument(
+        "title", type=str, help="Title of the LeetCode problem", nargs="?"
+    )
+    argparse.add_argument(
+        "--solutions", type=str, default="solutions", help="Path to solutions"
+    )
     argparse.add_argument("--tests", type=str, default="tests", help="Path to tests")
     args = argparse.parse_args()
     main(args.title, args.solutions, args.tests)

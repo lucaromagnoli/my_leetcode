@@ -37,12 +37,14 @@ Only one valid answer exists.
 Follow-up: Can you come up with an algorithm that is less than O(n2) time complexity?
 
 """
+
+
 class Solution:
     def twoSum(self, nums: list[int], target: int) -> list[int]:
         i = 0
         while i < len(nums):
             diff = target - nums[i]
-            if diff in nums[i+1:]:
+            if diff in nums[i + 1 :]:
                 j = i + 1
                 while j < len(nums):
                     if nums[j] == diff:

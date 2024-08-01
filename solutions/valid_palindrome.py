@@ -35,8 +35,9 @@ s consists only of printable ASCII characters.
 
 
 """
+
+
 class Solution:
     def isPalindrome(self, s: str) -> bool:
         string = [c for c in s.lower() if c.isalnum()]
         return string == string[::-1]
-

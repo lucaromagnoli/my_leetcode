@@ -28,6 +28,8 @@ Constraints:
 
 -231 <= x <= 231 - 1
 """
+
+
 class Solution:
     def reverse(self, x: int) -> int:
         negative = False
@@ -35,7 +37,7 @@ class Solution:
             negative = True
         x = abs(x)
         result = int("".join(reversed(str(x))))
-        if result < 2 ** 31:
+        if result < 2**31:
             if negative:
                 return -result
             else:

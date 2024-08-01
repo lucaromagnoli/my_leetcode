@@ -1,6 +1,7 @@
 """
 Utility module for linked list problems.
 """
+
 from lib2to3.pytree import Node
 
 
@@ -46,10 +47,8 @@ class TreeNode(object):
             result.pop()
         return result
 
-
     def __repr__(self):
-        return (f"          {self.val}\n"
-                f"{self.left}         {self.right}\n")
+        return f"          {self.val}\n" f"{self.left}         {self.right}\n"
 
 
 def iterable_to_list_node(iterable: list | tuple | str) -> ListNode:
@@ -71,6 +70,7 @@ def linked_list_to_list(node: ListNode) -> list:
         values.append(node.val)
         node = node.next
     return values
+
 
 def iterable_to_treenode(items: list[int]) -> TreeNode:
     """Create binary tree from list of values."""

@@ -42,11 +42,15 @@ columnTitle is in the range ["A", "FXSHRXW"].
 
 
 """
+
 import string
+
 
 class Solution:
     def titleToNumber(self, column: str) -> int:
         number = 0
         for i, c in enumerate(column[::-1]):
-            number += ((string.ascii_uppercase.index(c) + 1) * len(string.ascii_uppercase) ** i)
+            number += (string.ascii_uppercase.index(c) + 1) * len(
+                string.ascii_uppercase
+            ) ** i
         return number

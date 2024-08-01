@@ -40,6 +40,8 @@ Constraints:
  
 Follow up: Could you solve it iteratively?
 """
+
+
 class Solution:
     def rle(self, n_str: str) -> str:
         i = 0

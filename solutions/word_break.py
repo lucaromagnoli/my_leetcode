@@ -35,7 +35,9 @@ Constraints:
 s and wordDict[i] consist of only lowercase English letters.
 All the strings of wordDict are unique.
 """
+
 from functools import cache
+
 
 class Solution:
     def wordBreak(self, s: str, word_dict: list[str]) -> bool:
@@ -55,7 +57,7 @@ class Solution:
                 l = l - len(last_word)
                 results.append(False)
             for word in word_dict:
-                if s[l:l+len(word)] == word:
+                if s[l : l + len(word)] == word:
                     seen.append(word)
                     backtrack(l + len(word), r)
 

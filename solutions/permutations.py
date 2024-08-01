@@ -24,6 +24,8 @@ Constraints:
 -10 <= nums[i] <= 10
 All the integers of nums are unique.
 """
+
+
 class Solution:
     def permute(self, nums):
         def backtrack(a, size):
@@ -36,9 +38,8 @@ class Solution:
                 yield from backtrack(a, size - 1)
 
                 if size & 1:
-                    a[0], a[size-1] = a[size-1], a[0]
+                    a[0], a[size - 1] = a[size - 1], a[0]
                 else:
-                    a[i], a[size-1] = a[size-1], a[i]
+                    a[i], a[size - 1] = a[size - 1], a[i]
 
         return list(backtrack(nums, len(nums)))
-

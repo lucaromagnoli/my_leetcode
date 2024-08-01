@@ -28,6 +28,7 @@ The number of nodes in the tree is in the range [0, 105].
 
 
 """
+
 from typing import Optional
 
 
@@ -37,6 +38,7 @@ class TreeNode:
         self.val = val
         self.left = left
         self.right = right
+
 
 class Solution:
     def minDepth(self, root: Optional[TreeNode]) -> int:
@@ -52,7 +54,6 @@ class Solution:
                 inner(node.left, counter + 1)
             if node.right:
                 inner(node.right, counter + 1)
+
         inner(root, 1)
         return min(results)
-
-        

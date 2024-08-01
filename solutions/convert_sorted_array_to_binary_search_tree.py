@@ -31,6 +31,7 @@ nums is sorted in a strictly increasing order.
 
 
 """
+
 from typing import Optional, List
 
 from utils.data_structures import TreeNode
@@ -60,5 +61,3 @@ class Solution:
             return node
 
         return inner(0, n - 1)
-
-
