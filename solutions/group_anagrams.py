@@ -27,31 +27,16 @@ strs[i] consists of lowercase English letters.
 
 
 """
+import itertools
+import string
 from collections import Counter
 
 
 class Solution(object):
-
-    def is_anagram(self, this_word, that_word):
-        return Counter(this_word) == Counter(that_word)
-
-    def groupAnagrams(self, strs):
-        """
-        :type strs: List[str]
-        :rtype: List[List[str]]
-        """
-        anagrams = []
-        seen = set()
-        for i in range(len(strs)):
-            group = []
-            if i not in seen:
-                group = [strs[i]]
-                seen.add(i)
-                for j in range(i + 1, len(strs)):
-                    if j not in seen:
-                        if self.is_anagram(strs[i], strs[j]):
-                            group.append(strs[j])
-                            seen.add(j)
-            if group:
-                anagrams.append(group)
-        return anagrams
+    def groupAnagrams(self, words):
+        groups = {}
+        for word in words:
+            key = tuple(sorted(word))
+            groups.setdefault(key, [])
+            groups[key].append(word)
+        return [v for k, v in groups.items()]
