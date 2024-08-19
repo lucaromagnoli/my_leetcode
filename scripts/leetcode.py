@@ -1,5 +1,7 @@
 from pathlib import Path
 import argparse
+from urllib.parse import urlparse
+
 import requests
 from bs4 import BeautifulSoup
 
@@ -130,16 +132,27 @@ def get_problem(
         print(f"Files for problem {title} already exist.")
 
 
+def parse_title(title):
+    parts = urlparse(title)
+    if not parts.netloc:
+        return title
+    elif parts.netloc == 'leetcode.com':
+        return parts.path.replace("problems", "").replace("/", "")
+    else:
+        raise ValueError(f"Unexpected title: {title}")
+
+
 def main(
     title: str, solutions_path: str = "solutions", tests_path: str = "tests"
 ) -> None:
+    title = parse_title(title)
     get_problem(title, solutions_path, tests_path)
 
 
 if __name__ == "__main__":
     argparse = argparse.ArgumentParser()
     argparse.add_argument(
-        "title", type=str, help="Title of the LeetCode problem", nargs="?"
+        "title", type=str, help="Title or full URL of the LeetCode problem", nargs="?"
     )
     argparse.add_argument(
         "--solutions", type=str, default="solutions", help="Path to solutions"
