@@ -34,6 +34,7 @@ s consists of only English letters and spaces ' '.
 There will be at least one word in s.
 """
 
+
 class Solution:
     def lengthOfLastWord(self, s: str) -> int:
         parts = s.split()

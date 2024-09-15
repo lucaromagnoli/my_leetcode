@@ -28,6 +28,8 @@ haystack and needle consist of only lowercase English characters.
 
 
 """
+
+
 class Solution:
     def is_substring(self, idx, haystack, needle):
         i = 0

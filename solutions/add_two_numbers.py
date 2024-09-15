@@ -34,9 +34,10 @@ It is guaranteed that the list represents a number that does not have leading ze
 
 
 """
+
 from typing import Optional
 
-from utils.linked_list import ListNode
+from utils.data_structures import ListNode
 
 
 class Solution:

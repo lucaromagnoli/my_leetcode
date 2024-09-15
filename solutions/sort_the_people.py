@@ -31,9 +31,13 @@ n == names.length == heights.length
 names[i] consists of lower and upper case English letters.
 All the values of heights are distinct.
 """
+
 from typing import List
 
 
 class Solution:
     def sortPeople(self, names: List[str], heights: List[int]) -> List[str]:
-        return [n[0] for n in sorted(list(zip(names, heights)), key=lambda x:x[1], reverse=True)]
+        return [
+            n[0]
+            for n in sorted(list(zip(names, heights)), key=lambda x: x[1], reverse=True)
+        ]

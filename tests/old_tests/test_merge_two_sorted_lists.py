@@ -1,5 +1,5 @@
 import pytest
-from utils.linked_list import iterable_to_list_node
+from utils.data_structures import iterable_to_list_node
 from solutions.merge_two_sorted_lists import Solution
 
 

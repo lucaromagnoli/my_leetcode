@@ -1,8 +1,12 @@
 from pathlib import Path
 import argparse
+from urllib.parse import urlparse
+
 import requests
 from bs4 import BeautifulSoup
 
+class FileExistsError(Exception):
+    pass
 
 def fetch_operation(data: dict) -> dict:
     """
@@ -77,6 +81,8 @@ def write_file(content: str, filepath: Path, mode: str = "w") -> None:
 def write_solution_file(title, base_path="solutions") -> Path:
     sol_fpath = Path.cwd().parent / base_path / f"{title.replace('-', '_')}.py"
     sol_fpath.parent.mkdir(parents=True, exist_ok=True)
+    if sol_fpath.exists():
+        raise FileExistsError(f"File already exists: {sol_fpath}")
     question_content = fetch_question_content(title)["data"]["question"]["content"]
     content = (
         BeautifulSoup(question_content, "html.parser").get_text().replace("\xa0", " ")
@@ -106,6 +112,8 @@ def write_solution_file(title, base_path="solutions") -> Path:
 def write_test_file(title, base_path="tests") -> Path:
     test_fpath = Path.cwd().parent / base_path / f"test_{title.replace('-', '_')}.py"
     test_fpath.parent.mkdir(parents=True, exist_ok=True)
+    if test_fpath.exists():
+        raise FileExistsError(f"File already exists: {test_fpath}")
     write_file("", test_fpath)
     return test_fpath
 
@@ -116,19 +124,39 @@ def get_problem(
     """
     Main function to fetch and write the LeetCode question content and code snippet to files.
     """
-    sol_fpath = write_solution_file(title, solutions_path)
-    test_fpath = write_test_file(title, tests_path)
-    print(f"Files created: {sol_fpath}, {test_fpath}")
+    try:
+        sol_fpath = write_solution_file(title, solutions_path)
+        test_fpath = write_test_file(title, tests_path)
+        print(f"Files created: {sol_fpath}, {test_fpath}")
+    except FileExistsError:
+        print(f"Files for problem {title} already exist.")
 
 
-def main(title: str, solutions_path: str = "solutions", tests_path: str = "tests") -> None:
+def parse_title(title):
+    parts = urlparse(title)
+    if not parts.netloc:
+        return title
+    elif parts.netloc == 'leetcode.com':
+        return parts.path.replace("problems", "").replace("/", "")
+    else:
+        raise ValueError(f"Unexpected title: {title}")
+
+
+def main(
+    title: str, solutions_path: str = "solutions", tests_path: str = "tests"
+) -> None:
+    title = parse_title(title)
     get_problem(title, solutions_path, tests_path)
 
 
 if __name__ == "__main__":
     argparse = argparse.ArgumentParser()
-    argparse.add_argument("title", type=str, help="Title of the LeetCode problem", nargs="?")
-    argparse.add_argument("--solutions", type=str, default="solutions", help="Path to solutions")
+    argparse.add_argument(
+        "title", type=str, help="Title or full URL of the LeetCode problem", nargs="?"
+    )
+    argparse.add_argument(
+        "--solutions", type=str, default="solutions", help="Path to solutions"
+    )
     argparse.add_argument("--tests", type=str, default="tests", help="Path to tests")
     args = argparse.parse_args()
     main(args.title, args.solutions, args.tests)

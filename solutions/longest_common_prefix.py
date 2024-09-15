@@ -29,6 +29,8 @@ strs[i] consists of only lowercase English letters.
 
 
 """
+
+
 class Solution:
     def longestCommonPrefix(self, strs: list[str]) -> str:
         shortest = min(strs, key=len)

@@ -34,11 +34,11 @@ Constraints:
 Follow up: Could you solve it without converting the integer to a string?
 
 """
+
+
 class Solution:
     def isPalindrome(self, x: int) -> bool:
         if x < 0:
             return False
         digits = tuple(str(x))
         return digits == digits[::-1]
-
-        

@@ -45,6 +45,7 @@ Follow up: Can you come up with an algorithm that runs in O(m + n) time?
 
 """
 
+
 class Solution(object):
     def merge(self, nums1, m, nums2, n):
         """

@@ -31,6 +31,8 @@ Constraints:
 nums contains distinct values sorted in ascending order.
 -104 <= target <= 104
 """
+
+
 class Solution:
     def searchInsert(self, nums: list[int], target: int) -> int:
         def inner(l, r):

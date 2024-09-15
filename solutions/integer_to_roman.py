@@ -94,6 +94,8 @@ Constraints:
 
 
 """
+
+
 class Solution:
     def intToRoman(self, int_num: int) -> str:
         symbols_map = {
@@ -128,5 +130,5 @@ class Solution:
                 mul = (mul * column) - (5 * column)
                 mul = int(mul / column)
                 romans.append(symbols_map[column] * mul)
-            column = int(column/10)
+            column = int(column / 10)
         return "".join(romans)

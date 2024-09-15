@@ -31,17 +31,21 @@ board[i].length == 9
 board[i][j] is a digit or '.'.
 It is guaranteed that the input board has only one solution.
 """
+
+
 class Solution:
 
     def can_be_placed(self, board, row_idx, col_idx, number):
         column = [board[r][col_idx] for r in range(9)]
         box_row = (row_idx // 3) * 3
         box_col = (col_idx // 3) * 3
-        box = [board[r][c] for r in range(box_row, box_row + 3) for c in range(box_col, box_col + 3)]
+        box = [
+            board[r][c]
+            for r in range(box_row, box_row + 3)
+            for c in range(box_col, box_col + 3)
+        ]
         return (
-                number not in board[row_idx] and
-                number not in column and
-                number not in box
+            number not in board[row_idx] and number not in column and number not in box
         )
 
     def solveSudoku(self, board: list[list[str]]) -> None:
@@ -59,4 +63,3 @@ class Solution:
             return True
 
         solve()
-        

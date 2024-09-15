@@ -30,6 +30,7 @@ Constraints:
 
 1 <= n <= 45
 """
+
 from functools import cache
 
 

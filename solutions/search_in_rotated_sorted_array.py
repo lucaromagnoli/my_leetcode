@@ -29,8 +29,10 @@ All values of nums are unique.
 nums is an ascending array that is possibly rotated.
 -104 <= target <= 104
 """
+
+
 class Solution:
     def search(self, nums: list[int], target: int) -> int:
         if target in nums:
             return nums.index(target)
-        return - 1
+        return -1

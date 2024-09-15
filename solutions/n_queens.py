@@ -26,39 +26,41 @@ Constraints:
 
 1 <= n <= 9
 """
+
+
 class Solution:
     def is_safe(self, board, row, col, n):
         # Check this row on the left side
         for i in range(col):
-            if board[row][i] == 'Q':
+            if board[row][i] == "Q":
                 return False
 
         # Check upper diagonal on left side
         for i, j in zip(range(row, -1, -1), range(col, -1, -1)):
-            if board[i][j] == 'Q':
+            if board[i][j] == "Q":
                 return False
 
         # Check lower diagonal on left side
         for i, j in zip(range(row, n, 1), range(col, -1, -1)):
-            if board[i][j] == 'Q':
+            if board[i][j] == "Q":
                 return False
 
         return True
 
     def solveNQueens(self, n):
-        board = [['.' for _ in range(n)] for _ in range(n)]
+        board = [["." for _ in range(n)] for _ in range(n)]
         result = []
 
         def backtrack(col):
             if col == n:
-                result.append([''.join(row) for row in board])
+                result.append(["".join(row) for row in board])
                 return
 
             for row in range(n):
                 if self.is_safe(board, row, col, n):
-                    board[row][col] = 'Q'
+                    board[row][col] = "Q"
                     backtrack(col + 1)
-                    board[row][col] = '.'
+                    board[row][col] = "."
 
         backtrack(0)
         return result
