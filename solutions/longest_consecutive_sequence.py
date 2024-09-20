@@ -27,6 +27,8 @@ Constraints:
 
 
 """
+
+
 class Solution(object):
     def longestConsecutive(self, nums: list[int]) -> int:
         if not nums:

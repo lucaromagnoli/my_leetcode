@@ -1,6 +1,3 @@
-from functools import cache
-
-
 class Solution:
     def can_be_placed(self, tboard, row_idx, col_idx, number):
         column = [tboard[r][col_idx] for r in range(9)]

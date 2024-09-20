@@ -46,6 +46,8 @@ s[i] is either '0' or '1'.
 
 
 """
+
+
 class Solution(object):
     def checkZeroOnes(self, s):
         """
@@ -55,4 +57,3 @@ class Solution(object):
         zeros = s.split("1")
         ones = s.split("0")
         return len(max(ones, key=len)) > len(max(zeros, key=len))
-
