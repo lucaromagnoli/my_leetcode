@@ -8,3 +8,5 @@ Solutions in `/other` have not been solved by me, I have only rewritten the solu
 Tests have been written with the help of co-pilot.
 
 There is a script `leetcode.py` that can be used to create a new problem file with the problem description and test cases.
+
+This project is managed with [uv](https://docs.astral.sh/uv/)
