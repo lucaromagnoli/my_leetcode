@@ -16,7 +16,7 @@ Write the code that will take a string and make this conversion given a number o
 
 string convert(string s, int numRows);
 
- 
+
 Example 1:
 
 Input: s = "PAYPALISHIRING", numRows = 3
@@ -37,7 +37,7 @@ Example 3:
 Input: s = "A", numRows = 1
 Output: "A"
 
- 
+
 Constraints:
 
 1 <= s.length <= 1000
@@ -50,7 +50,6 @@ s consists of English letters (lower-case and upper-case), ',' and '.'.
 
 
 class Solution:
-
     @staticmethod
     def insert_at_column(column, item, row: list):
         idx = column

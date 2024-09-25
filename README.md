@@ -9,4 +9,6 @@ Tests have been written with the help of co-pilot.
 
 There is a script `leetcode.py` that can be used to create a new problem file with the problem description and test cases.
 
+
+# quick start
 This project is managed with [uv](https://docs.astral.sh/uv/)

@@ -6,7 +6,7 @@ Difficulty: Medium
 Category: Algorithms
 Problem:
 Given a linked list, swap every two adjacent nodes and return its head. You must solve the problem without modifying the values in the list's nodes (i.e., only nodes themselves may be changed.)
- 
+
 Example 1:
 
 
@@ -23,7 +23,7 @@ Example 3:
 Input: head = [1]
 Output: [1]
 
- 
+
 Constraints:
 
 The number of nodes in the list is in the range [0, 100].

@@ -13,7 +13,7 @@ Each of the digits 1-9 must occur exactly once in each column.
 Each of the digits 1-9 must occur exactly once in each of the 9 3x3 sub-boxes of the grid.
 
 The '.' character indicates empty cells.
- 
+
 Example 1:
 
 
@@ -23,7 +23,7 @@ Explanation: The input board is shown above and the only valid solution is shown
 
 
 
- 
+
 Constraints:
 
 board.length == 9
@@ -34,7 +34,6 @@ It is guaranteed that the input board has only one solution.
 
 
 class Solution:
-
     def can_be_placed(self, board, row_idx, col_idx, number):
         column = [board[r][col_idx] for r in range(9)]
         box_row = (row_idx // 3) * 3
