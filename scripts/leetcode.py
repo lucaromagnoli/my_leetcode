@@ -5,8 +5,6 @@ from urllib.parse import urlparse
 import requests
 from bs4 import BeautifulSoup
 
-class FileExistsError(Exception):
-    pass
 
 def fetch_operation(data: dict) -> dict:
     """
@@ -136,7 +134,7 @@ def parse_title(title):
     parts = urlparse(title)
     if not parts.netloc:
         return title
-    elif parts.netloc == 'leetcode.com':
+    elif parts.netloc == "leetcode.com":
         return parts.path.replace("problems", "").replace("/", "")
     else:
         raise ValueError(f"Unexpected title: {title}")

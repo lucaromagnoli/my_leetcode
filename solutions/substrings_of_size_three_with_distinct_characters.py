@@ -32,10 +32,12 @@ s​​​​​​ consists of lowercase English letters.
 
 
 """
+
+
 class Solution:
     def countGoodSubstrings(self, string: str) -> int:
         counter = 0
         for i in range(len(string) - 2):
-            if len(string[i:i+3]) == len(set(string[i:i+3])):
+            if len(string[i : i + 3]) == len(set(string[i : i + 3])):
                 counter += 1
         return counter
