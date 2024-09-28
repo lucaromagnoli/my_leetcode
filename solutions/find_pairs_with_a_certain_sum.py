@@ -16,7 +16,7 @@ FindSumPairs(int[] nums1, int[] nums2) Initializes the FindSumPairs object with 
 void add(int index, int val) Adds val to nums2[index], i.e., apply nums2[index] += val.
 int count(int tot) Returns the number of pairs (i, j) such that nums1[i] + nums2[j] == tot.
 
- 
+
 Example 1:
 
 Input
@@ -35,7 +35,7 @@ findSumPairs.add(0, 1); // now nums2 = [2,4,5,4,5,4]
 findSumPairs.add(1, 1); // now nums2 = [2,5,5,4,5,4]
 findSumPairs.count(7);  // return 11; pairs (2,1), (2,2), (2,4), (3,1), (3,2), (3,4), (4,1), (4,2), (4,4) make 2 + 5 and pairs (5,3), (5,5) make 3 + 4
 
- 
+
 Constraints:
 
 1 <= nums1.length <= 1000
@@ -56,7 +56,6 @@ import numpy as np
 
 
 class FindSumPairs(object):
-
     def __init__(self, nums1, nums2):
         """
         :type nums1: List[int]
@@ -106,9 +105,16 @@ class FindSumPairs(object):
         filtered_map1 = self.filter_frequency_map(self.nums1_freq_map, tot)
         filtered_map2 = self.filter_frequency_map(self.nums2_freq_map, tot)
         smallest_map, largest_map = (
-            filtered_map1 if len(filtered_map1) <= len(filtered_map2) else filtered_map2
-        ), (
-            filtered_map2 if len(filtered_map1) <= len(filtered_map2) else filtered_map1
+            (
+                filtered_map1
+                if len(filtered_map1) <= len(filtered_map2)
+                else filtered_map2
+            ),
+            (
+                filtered_map2
+                if len(filtered_map1) <= len(filtered_map2)
+                else filtered_map1
+            ),
         )
         for n1, n1_freq in smallest_map.items():
             diff = tot - n1

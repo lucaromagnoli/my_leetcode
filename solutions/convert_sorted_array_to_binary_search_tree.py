@@ -6,7 +6,7 @@ Difficulty: Easy
 Category: Algorithms
 Problem:
 Given an integer array nums where the elements are sorted in ascending order, convert it to a height-balanced binary search tree.
- 
+
 Example 1:
 
 
@@ -22,7 +22,7 @@ Input: nums = [1,3]
 Output: [3,1]
 Explanation: [1,null,3] and [3,1] are both height-balanced BSTs.
 
- 
+
 Constraints:
 
 1 <= nums.length <= 104
@@ -45,7 +45,6 @@ from utils.data_structures import TreeNode
 #         self.right = right
 class Solution:
     def sortedArrayToBST(self, nums: List[int]) -> Optional[TreeNode]:
-
         n = len(nums)
         if n == 0:
             return None

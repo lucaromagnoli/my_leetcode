@@ -1,5 +1,5 @@
-from pathlib import Path
 import argparse
+from pathlib import Path
 from urllib.parse import urlparse
 
 import requests
@@ -64,7 +64,7 @@ def get_snippet(editor_data: dict) -> str:
     Extracts the Python code snippet from the editor data.
     """
     for snippet in editor_data["data"]["question"]["codeSnippets"]:
-        if snippet["lang"] == "Python":
+        if snippet["lang"] in ["Python", "Pandas"]:
             return snippet["code"]
 
 

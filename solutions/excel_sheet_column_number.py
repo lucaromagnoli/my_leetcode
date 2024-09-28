@@ -14,10 +14,10 @@ C -> 3
 ...
 Z -> 26
 AA -> 27
-AB -> 28 
+AB -> 28
 ...
 
- 
+
 Example 1:
 
 Input: columnTitle = "A"
@@ -33,7 +33,7 @@ Example 3:
 Input: columnTitle = "ZY"
 Output: 701
 
- 
+
 Constraints:
 
 1 <= columnTitle.length <= 7
