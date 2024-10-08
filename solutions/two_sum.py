@@ -41,13 +41,7 @@ Follow-up: Can you come up with an algorithm that is less than O(n2) time comple
 
 class Solution:
     def twoSum(self, nums: list[int], target: int) -> list[int]:
-        i = 0
-        while i < len(nums):
-            diff = target - nums[i]
-            if diff in nums[i + 1 :]:
-                j = i + 1
-                while j < len(nums):
-                    if nums[j] == diff:
-                        return [i, j]
-                    j += 1
-            i += 1
+        for i, num in enumerate(nums):
+            diff = target - num
+            if diff in nums[i + 1:]:
+                return [i, nums[i + 1:].index(diff) + i + 1]
