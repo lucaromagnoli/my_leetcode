@@ -82,7 +82,7 @@ def convert_docstring_to_type_hints(code):
 
     # Regex to extract parameter types (including complex types like List[int])
     param_type_pattern = re.compile(r"(\w+)\s*:\s*([\w\[\], ]+)")
-    return_type_pattern = re.compile(r"->\s*([\w\[\], ]+)")
+    return_type_pattern = re.compile(r":rtype:\s*([\w\[\], ]+)")
 
     def convert_type(type_):
         """Converts types like List[int] to list[int]."""
@@ -203,11 +203,11 @@ def parse_title(title):
 
 
 def main(
-    title: str, solutions_path: str = "solutions", tests_path: str = "tests"
+    title: str, solutions_path: str, tests_path: str, ide: str
 ) -> None:
     title = parse_title(title)
     sol_path, test_path = get_problem(title, solutions_path, tests_path)
-    subprocess.run(["pycharm", str(sol_path), str(test_path)])
+    subprocess.run([ide, str(sol_path), str(test_path)])
 
 
 if __name__ == "__main__":
@@ -219,5 +219,6 @@ if __name__ == "__main__":
         "--solutions", type=str, default="solutions", help="Path to solutions"
     )
     argparse.add_argument("--tests", type=str, default="tests", help="Path to tests")
+    argparse.add_argument("--ide", type=str, default="pycharm", help="IDE to open files")
     args = argparse.parse_args()
-    main(args.title, args.solutions, args.tests)
+    main(args.title, args.solutions, args.tests, args.ide)
