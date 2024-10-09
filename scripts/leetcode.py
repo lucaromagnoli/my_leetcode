@@ -67,6 +67,10 @@ def get_snippet(editor_data: dict) -> str:
         if snippet["lang"] in ["Python", "Pandas"]:
             return snippet["code"]
 
+def convert_snippet_to_py3(snippet: str):
+    """Converts Python 2 code snippet to Python 3."""
+    snippet = snippet.replace("print ", "print(")
+
 
 def write_file(content: str, filepath: Path, mode: str = "w") -> None:
     """
@@ -135,7 +139,7 @@ def parse_title(title):
     if not parts.netloc:
         return title
     elif parts.netloc == "leetcode.com":
-        return parts.path.replace("problems", "").replace("/", "")
+        return [p for p in parts.path.split("/") if p][1]
     else:
         raise ValueError(f"Unexpected title: {title}")
 
