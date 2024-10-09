@@ -1,4 +1,5 @@
 import argparse
+import re
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -67,10 +68,64 @@ def get_snippet(editor_data: dict) -> str:
         if snippet["lang"] in ["Python", "Pandas"]:
             return snippet["code"]
 
-def convert_snippet_to_py3(snippet: str):
-    """Converts Python 2 code snippet to Python 3."""
-    snippet = snippet.replace("print ", "print(")
+def remove_object_from_class(code):
+    """Removes object inheritance from new-style Python classes."""
+    pattern = r'(class\s+\w+)\(object\)(\s*:)'
+    replacement = r'\1\2'
+    return re.sub(pattern, replacement, code)
 
+def convert_docstring_to_type_hints(code):
+    """Converts type hints in docstrings to actual Python 3 type hints."""
+    # Regex to match a function signature and the associated docstring
+    function_pattern = re.compile(r"def\s+(\w+)\((.*?)\):\s*\n\s*\"\"\"(.*?)\"\"\"", re.DOTALL)
+
+    # Regex to extract parameter types (including complex types like List[int])
+    param_type_pattern = re.compile(r"(\w+)\s*:\s*([\w\[\], ]+)")
+    return_type_pattern = re.compile(r"->\s*([\w\[\], ]+)")
+
+    def convert_type(type_):
+        """Converts types like List[int] to list[int]."""
+        return type_.replace('List', 'list').replace('Dict', 'dict').replace('Tuple', 'tuple')
+
+    def replace_function_signature(match):
+        func_name = match.group(1)
+        params = match.group(2)
+        docstring = match.group(3)
+
+        # Extract types from docstring
+        param_types = param_type_pattern.findall(docstring)
+        return_type = return_type_pattern.search(docstring)
+
+        # Build new parameter list with type hints
+        param_list = params.split(", ")
+        for i, param in enumerate(param_list):
+            for name, type_ in param_types:
+                if name == param:
+                    param_list[i] = f"{param}: {convert_type(type_)}"
+
+        new_param_list = ", ".join(param_list)
+
+        # Add return type hint if available
+        return_hint = ""
+        if return_type:
+            return_hint = f" -> {convert_type(return_type.group(1))}"
+
+        # Reconstruct the function signature with type hints
+        new_function = f"def {func_name}({new_param_list}){return_hint}:"
+
+        return new_function
+
+    # Apply transformation to all functions in the code
+    new_code = function_pattern.sub(replace_function_signature, code)
+    return new_code
+
+def convert_python2_to_python3(code):
+    """Converts Python 2 code to Python 3 without object inheritance."""
+    # Step 1: Remove (object) from class definitions
+    code = remove_object_from_class(code)
+
+    # Step 2: Convert docstring types into type hints
+    return convert_docstring_to_type_hints(code)
 
 def write_file(content: str, filepath: Path, mode: str = "w") -> None:
     """
@@ -98,6 +153,7 @@ def write_solution_file(title, base_path="solutions") -> Path:
     }
     editor_data = fetch_question_editor_data(title)
     snippet = get_snippet(editor_data)
+    snippet = convert_python2_to_python3(snippet)
     file_content = '"""\n'
     file_content += f"https://leetcode.com/problems/{title}/\n"
     file_content += f"Title: {metadata['title']}\n"
