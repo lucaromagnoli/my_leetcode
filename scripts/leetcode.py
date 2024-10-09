@@ -1,5 +1,6 @@
 import argparse
 import re
+import subprocess
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -113,7 +114,7 @@ def convert_docstring_to_type_hints(code):
         # Reconstruct the function signature with type hints
         new_function = f"def {func_name}({new_param_list}){return_hint}:"
 
-        return new_function
+        return f"{new_function}\n    \"\"\"{docstring}\"\"\""  # Add indentation
 
     # Apply transformation to all functions in the code
     new_code = function_pattern.sub(replace_function_signature, code)
@@ -133,13 +134,15 @@ def write_file(content: str, filepath: Path, mode: str = "w") -> None:
     """
     with open(filepath, mode) as f:
         f.write(content)
+    print(f"File written: {filepath}")
 
 
 def write_solution_file(title, base_path="solutions") -> Path:
     sol_fpath = Path.cwd().parent / base_path / f"{title.replace('-', '_')}.py"
     sol_fpath.parent.mkdir(parents=True, exist_ok=True)
     if sol_fpath.exists():
-        raise FileExistsError(f"File already exists: {sol_fpath}")
+        print(f"File already exists: {sol_fpath}")
+        return sol_fpath
     question_content = fetch_question_content(title)["data"]["question"]["content"]
     content = (
         BeautifulSoup(question_content, "html.parser").get_text().replace("\xa0", " ")
@@ -171,23 +174,22 @@ def write_test_file(title, base_path="tests") -> Path:
     test_fpath = Path.cwd().parent / base_path / f"test_{title.replace('-', '_')}.py"
     test_fpath.parent.mkdir(parents=True, exist_ok=True)
     if test_fpath.exists():
-        raise FileExistsError(f"File already exists: {test_fpath}")
+        print(f"File already exists: {test_fpath}")
+        return test_fpath
     write_file("", test_fpath)
     return test_fpath
 
 
 def get_problem(
     title: str, solutions_path: str = "solutions", tests_path: str = "tests"
-) -> None:
+) -> tuple[Path, Path]:
     """
     Main function to fetch and write the LeetCode question content and code snippet to files.
     """
-    try:
-        sol_fpath = write_solution_file(title, solutions_path)
-        test_fpath = write_test_file(title, tests_path)
-        print(f"Files created: {sol_fpath}, {test_fpath}")
-    except FileExistsError:
-        print(f"Files for problem {title} already exist.")
+
+    sol_fpath = write_solution_file(title, solutions_path)
+    test_fpath = write_test_file(title, tests_path)
+    return sol_fpath, test_fpath
 
 
 def parse_title(title):
@@ -204,7 +206,8 @@ def main(
     title: str, solutions_path: str = "solutions", tests_path: str = "tests"
 ) -> None:
     title = parse_title(title)
-    get_problem(title, solutions_path, tests_path)
+    sol_path, test_path = get_problem(title, solutions_path, tests_path)
+    subprocess.run(["pycharm", str(sol_path), str(test_path)])
 
 
 if __name__ == "__main__":
