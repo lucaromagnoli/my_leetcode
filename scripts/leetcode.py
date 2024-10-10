@@ -114,7 +114,7 @@ def convert_docstring_to_type_hints(code):
         # Reconstruct the function signature with type hints
         new_function = f"def {func_name}({new_param_list}){return_hint}:"
 
-        return f"{new_function}\n    \"\"\"{docstring}\"\"\""  # Add indentation
+        return f"{new_function}\n{' ' * 8}\"\"\"{docstring}\"\"\""  # Add indentation
 
     # Apply transformation to all functions in the code
     new_code = function_pattern.sub(replace_function_signature, code)
