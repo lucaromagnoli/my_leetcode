@@ -43,5 +43,7 @@ class Solution:
     def twoSum(self, nums: list[int], target: int) -> list[int]:
         for i, num in enumerate(nums):
             diff = target - num
-            if diff in nums[i + 1:]:
-                return [i, nums[i + 1:].index(diff) + i + 1]
+            for j in range(i + 1, len(nums)):
+                if nums[j] == diff:
+                    return [i, j]
+
