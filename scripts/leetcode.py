@@ -69,16 +69,20 @@ def get_snippet(editor_data: dict) -> str:
         if snippet["lang"] in ["Python", "Pandas"]:
             return snippet["code"]
 
+
 def remove_object_from_class(code):
     """Removes object inheritance from new-style Python classes."""
-    pattern = r'(class\s+\w+)\(object\)(\s*:)'
-    replacement = r'\1\2'
+    pattern = r"(class\s+\w+)\(object\)(\s*:)"
+    replacement = r"\1\2"
     return re.sub(pattern, replacement, code)
+
 
 def convert_docstring_to_type_hints(code):
     """Converts type hints in docstrings to actual Python 3 type hints."""
     # Regex to match a function signature and the associated docstring
-    function_pattern = re.compile(r"def\s+(\w+)\((.*?)\):\s*\n\s*\"\"\"(.*?)\"\"\"", re.DOTALL)
+    function_pattern = re.compile(
+        r"def\s+(\w+)\((.*?)\):\s*\n\s*\"\"\"(.*?)\"\"\"", re.DOTALL
+    )
 
     # Regex to extract parameter types (including complex types like List[int])
     param_type_pattern = re.compile(r"(\w+)\s*:\s*([\w\[\], ]+)")
@@ -86,7 +90,11 @@ def convert_docstring_to_type_hints(code):
 
     def convert_type(type_):
         """Converts types like List[int] to list[int]."""
-        return type_.replace('List', 'list').replace('Dict', 'dict').replace('Tuple', 'tuple')
+        return (
+            type_.replace("List", "list")
+            .replace("Dict", "dict")
+            .replace("Tuple", "tuple")
+        )
 
     def replace_function_signature(match):
         func_name = match.group(1)
@@ -120,6 +128,7 @@ def convert_docstring_to_type_hints(code):
     new_code = function_pattern.sub(replace_function_signature, code)
     return new_code
 
+
 def convert_python2_to_python3(code):
     """Converts Python 2 code to Python 3 without object inheritance."""
     # Step 1: Remove (object) from class definitions
@@ -127,6 +136,7 @@ def convert_python2_to_python3(code):
 
     # Step 2: Convert docstring types into type hints
     return convert_docstring_to_type_hints(code)
+
 
 def write_file(content: str, filepath: Path, mode: str = "w") -> None:
     """
@@ -202,9 +212,7 @@ def parse_title(title):
         raise ValueError(f"Unexpected title: {title}")
 
 
-def main(
-    title: str, solutions_path: str, tests_path: str, ide: str
-) -> None:
+def main(title: str, solutions_path: str, tests_path: str, ide: str) -> None:
     title = parse_title(title)
     sol_path, test_path = get_problem(title, solutions_path, tests_path)
     subprocess.run([ide, str(sol_path), str(test_path)])
@@ -219,6 +227,8 @@ if __name__ == "__main__":
         "--solutions", type=str, default="solutions", help="Path to solutions"
     )
     argparse.add_argument("--tests", type=str, default="tests", help="Path to tests")
-    argparse.add_argument("--ide", type=str, default="pycharm", help="IDE to open files")
+    argparse.add_argument(
+        "--ide", type=str, default="pycharm", help="IDE to open files"
+    )
     args = argparse.parse_args()
     main(args.title, args.solutions, args.tests, args.ide)

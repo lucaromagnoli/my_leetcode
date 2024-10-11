@@ -32,27 +32,12 @@ digits[i] is a digit in the range ['2', '9'].
 """
 
 
-def lex_gen(bounds):
-    elem = [0] * len(bounds)
-    while True:
-        yield elem
-        i = 0
-        while elem[i] == bounds[i] - 1:
-            elem[i] = 0
-            i += 1
-            if i == len(bounds):
-                return
-        elem[i] += 1
-
-
-def cart_product(lists):
-    bounds = [len(lst) for lst in lists]
-    for elem in lex_gen(bounds):
-        yield [lists[i][elem[i]] for i in range(len(lists))]
-
-
 class Solution:
     def letterCombinations(self, digits: str) -> list[str]:
+
+        if not digits:
+            return []
+
         digits_to_letters = {
             "2": ("a", "b", "c"),
             "3": ("d", "e", "f"),
@@ -64,7 +49,17 @@ class Solution:
             "9": ("w", "x", "y", "z"),
         }
         combinations = []
-        if digits:
-            letter_groups = [digits_to_letters[d] for d in digits]
-            combinations = sorted(list("".join(p) for p in cart_product(letter_groups)))
+
+        def backtrack(index, sol):
+            if index == len(digits):
+                combinations.append("".join(sol))
+                return
+
+            digit = digits[index]
+            for letter in digits_to_letters[digit]:
+                sol.append(letter)
+                backtrack(index + 1, sol)
+                sol.pop()
+
+        backtrack(0, [])
         return combinations
