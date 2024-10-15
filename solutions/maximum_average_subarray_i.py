@@ -28,6 +28,8 @@ n == nums.length
 
 
 """
+
+
 class Solution:
     def findMaxAverage(self, nums: list[int], k: int) -> float:
         if len(nums) == 1:

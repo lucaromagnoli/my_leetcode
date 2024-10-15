@@ -39,6 +39,8 @@ Constraints:
 
 
 """
+
+
 class Solution:
     def maxProfit(self, prices):
         """
@@ -61,7 +63,3 @@ class Solution:
             profit += hi - low
 
         return profit
-
-
-
-        

@@ -56,6 +56,8 @@ def array_sign_various_cases(nums, expected):
     assert result == expected
 
 """
+
+
 class Solution(object):
     def arraySign(self, nums):
         """
@@ -73,4 +75,3 @@ class Solution(object):
             return 1
         else:
             return -1
-        

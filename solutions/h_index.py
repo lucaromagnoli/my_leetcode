@@ -29,6 +29,8 @@ n == citations.length
 
 
 """
+
+
 class Solution(object):
     def hIndex(self, citations):
         """
@@ -41,6 +43,3 @@ class Solution(object):
             if citation >= i:
                 h_index = i
         return h_index
-
-
-

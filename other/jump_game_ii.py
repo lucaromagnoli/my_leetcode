@@ -33,6 +33,8 @@ It's guaranteed that you can reach nums[n - 1].
 
 
 """
+
+
 class Solution(object):
     def jump(self, nums):
         """

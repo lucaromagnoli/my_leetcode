@@ -32,6 +32,8 @@ s consists of lowercase English letters.
 
 
 """
+
+
 class Solution:
     def repeatedSubstringPattern(self, s: str) -> bool:
         if len(s) <= 1:

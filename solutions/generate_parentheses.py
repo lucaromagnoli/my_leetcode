@@ -20,6 +20,7 @@ Constraints:
 1 <= n <= 8
 """
 
+
 class Solution:
     def generateParenthesis(self, n: int) -> list[str]:
         """

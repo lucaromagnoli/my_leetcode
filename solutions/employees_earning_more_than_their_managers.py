@@ -45,9 +45,14 @@ Explanation: Joe is the only employee who earns more than his manager.
 
 
 """
+
 import pandas as pd
+
 
 def find_employees(employee: pd.DataFrame) -> pd.DataFrame:
     return employee[
-        [employee["salary"] > employee[[employee['id'] == employee["managerId"]]]["salary"]]
+        [
+            employee["salary"]
+            > employee[[employee["id"] == employee["managerId"]]]["salary"]
+        ]
     ]

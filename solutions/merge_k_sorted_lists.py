@@ -43,6 +43,7 @@ The sum of lists[i].length will not exceed 104.
 
 
 """
+
 from typing import Optional
 
 
@@ -51,6 +52,7 @@ class ListNode(object):
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
+
 
 def linked_list_to_list(node: ListNode) -> list:
     """Convert a linked list to a list."""
@@ -75,6 +77,11 @@ def list_to_list_node(iterable: list) -> ListNode:
 
 class Solution:
     def mergeKLists(self, lists: list[Optional[ListNode]]) -> Optional[ListNode]:
-        lists = sorted([l for iterable in [linked_list_to_list(l) for l in lists] for l in iterable])
+        lists = sorted(
+            [
+                l
+                for iterable in [linked_list_to_list(l) for l in lists]
+                for l in iterable
+            ]
+        )
         return list_to_list_node(lists)
-

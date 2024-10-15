@@ -87,6 +87,8 @@ s consists of English letters (lower-case and upper-case), digits (0-9), ' ', '+
 
 
 """
+
+
 class Solution:
     def myAtoi(self, s):
         """
@@ -115,9 +117,9 @@ class Solution:
                 break
         new_num = int("".join(number))
         if negative:
-            new_num = - new_num
-        low_range = -2 ** 31
-        high_range = 2 ** 31 - 1
+            new_num = -new_num
+        low_range = -(2**31)
+        high_range = 2**31 - 1
         if low_range < new_num < high_range:
             return new_num
         else:

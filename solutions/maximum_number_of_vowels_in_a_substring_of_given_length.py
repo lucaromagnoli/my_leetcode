@@ -36,9 +36,10 @@ s consists of lowercase English letters.
 
 """
 
+
 class Solution:
     def maxVowels(self, string: str, k: int) -> int:
-        vowels = ('a', 'e', 'i', 'o', 'u')
+        vowels = ("a", "e", "i", "o", "u")
         current_vowels = 0
         substring = string[:k]
         for s in substring:

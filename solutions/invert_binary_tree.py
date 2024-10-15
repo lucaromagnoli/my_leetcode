@@ -32,6 +32,7 @@ The number of nodes in the tree is in the range [0, 100].
 
 
 """
+
 from typing import Optional
 
 
@@ -41,6 +42,7 @@ class TreeNode:
         self.val = val
         self.left = left
         self.right = right
+
 
 class Solution:
     def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:

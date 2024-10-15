@@ -34,6 +34,8 @@ Constraints:
  
 Follow up: Could you implement a solution that runs in O(n) time complexity and O(1) space complexity?
 """
+
+
 class Solution:
     def increasingTriplet(self, nums: list[int]) -> bool:
         for i in range(len(nums) - 2):
@@ -47,8 +49,3 @@ class Solution:
                         k -= 1
                 j += 1
         return False
-
-
-
-
-

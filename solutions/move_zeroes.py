@@ -24,6 +24,8 @@ Constraints:
  
 Follow up: Could you minimize the total number of operations done?
 """
+
+
 class Solution(object):
     def moveZeroes(self, nums):
         """

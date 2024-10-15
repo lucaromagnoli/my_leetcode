@@ -42,7 +42,9 @@ Explanation: a@b.com is repeated two times.
 
 
 """
+
 import pandas as pd
+
 
 def duplicate_emails(person: pd.DataFrame) -> pd.DataFrame:
     df = person.groupby(person["email"]).size().reset_index(name="dupes")

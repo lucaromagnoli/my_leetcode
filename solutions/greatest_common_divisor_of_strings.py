@@ -31,6 +31,8 @@ str1 and str2 consist of English uppercase letters.
 
 
 """
+
+
 class Solution:
     def gcdOfStrings(self, str1, str2):
         """
@@ -45,7 +47,10 @@ class Solution:
             long_mul, short_mul = len(longest) / i, len(shortest) / i
             long_mul_int, short_mul_int = int(long_mul), int(short_mul)
             if long_mul_int == long_mul and short_mul_int == short_mul:
-                if shortest[:i] * short_mul_int == shortest and shortest[:i] * long_mul_int == longest:
+                if (
+                    shortest[:i] * short_mul_int == shortest
+                    and shortest[:i] * long_mul_int == longest
+                ):
                     return shortest[:i]
             i -= 1
         return ""

@@ -28,10 +28,12 @@ s consist of printable ASCII characters.
 
 
 """
+
+
 class Solution:
     def reverseVowels(self, string: str) -> str:
         string = list(string)
-        vowels_tuple = ('a', 'e', 'i', 'o', 'u')
+        vowels_tuple = ("a", "e", "i", "o", "u")
         vowels = [c for c in string if c.lower() in vowels_tuple]
         reversed_vowels = vowels[::-1]
         vowels_idx = [i for i, c in enumerate(string) if c.lower() in vowels_tuple]
