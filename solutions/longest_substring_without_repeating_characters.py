@@ -35,29 +35,15 @@ s consists of English letters, digits, symbols and spaces.
 
 
 """
-
-
 class Solution:
-    def lengthOfLongestSubstring(self, s: str) -> int:
-        def find_substring(idx, chars):
-            substring = [chars[idx]]
-            sub_idx = idx + 1
-            while sub_idx < len(chars):
-                if chars[sub_idx] not in substring:
-                    substring.append(chars[sub_idx])
-                    sub_idx += 1
-                else:
-                    break
-            return substring
-
-        str_tuple = tuple(s)
-        if len(str_tuple) == 1:
-            return 1
-        substrings = []
-        for i in range(len(str_tuple)):
-            s = find_substring(i, str_tuple)
-            if s is not None:
-                substrings.append(s)
-        if substrings:
-            return len(max(substrings, key=len))
-        return 0
+    def lengthOfLongestSubstring(self, string: str) -> int:
+        longest = 0
+        seen_chars = []
+        r = 0
+        for l in range(len(string)):
+            while r < len(string) and string[r] not in seen_chars:
+                seen_chars.append(string[r])
+                r += 1
+            longest = max(longest, len(string[l:r]))
+            seen_chars.pop(0)
+        return longest
