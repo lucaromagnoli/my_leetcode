@@ -46,7 +46,9 @@ class Solution(object):
         end, far = 0, 0
         for i in range(n - 1):
             far = max(far, i + nums[i])
-            print(f"Before if - i: {i} - far: {far} - end: {end} - smallest: {smallest}")
+            print(
+                f"Before if - i: {i} - far: {far} - end: {end} - smallest: {smallest}"
+            )
 
             if i == end:
                 smallest += 1

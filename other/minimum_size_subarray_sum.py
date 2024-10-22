@@ -35,6 +35,7 @@ Constraints:
 Follow up: If you have figured out the O(n) solution, try coding another solution of which the time complexity is O(n log(n)).
 """
 
+
 class Solution:
     def minSubArrayLen(self, target: int, nums: list[int]) -> int:
         if target in nums:
@@ -52,4 +53,4 @@ class Solution:
                     min_len = current_len
                 current_sum -= nums[left]
                 left += 1
-        return min_len if min_len != float('inf') else 0
+        return min_len if min_len != float("inf") else 0

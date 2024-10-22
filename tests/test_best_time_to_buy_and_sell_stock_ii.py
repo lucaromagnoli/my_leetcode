@@ -1,5 +1,5 @@
 import pytest
-from solutions.best_time_to_buy_and_sell_stock_ii import Solution
+from other.best_time_to_buy_and_sell_stock_ii import Solution
 
 
 @pytest.fixture

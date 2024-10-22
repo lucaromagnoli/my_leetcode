@@ -1,6 +1,7 @@
 import pytest
 from solutions.longest_substring_without_repeating_characters import Solution
 
+
 @pytest.mark.parametrize(
     "input_string, expected_length",
     [
@@ -12,7 +13,7 @@ from solutions.longest_substring_without_repeating_characters import Solution
         ("aab", 2),  # Repeating characters at the start
         ("dvdf", 3),  # Repeating characters in the middle
         ("anviaj", 5),  # Repeating characters at the end
-        ("a"*1000, 1),  # Long string with all same characters
+        ("a" * 1000, 1),  # Long string with all same characters
         ("abcdefghijklmnopqrstuvwxyz", 26),  # Long string with all unique characters
     ],
 )

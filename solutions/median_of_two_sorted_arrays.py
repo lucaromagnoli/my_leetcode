@@ -32,6 +32,8 @@ nums2.length == n
 
 
 """
+
+
 class Solution:
     def findMedianSortedArrays(self, nums1: list[int], nums2: list[int]) -> float:
         """
@@ -45,9 +47,8 @@ class Solution:
         mid = length // 2
 
         if length % 2 == 0:
-            median = sum(nums[mid-1:mid+1]) / 2
+            median = sum(nums[mid - 1 : mid + 1]) / 2
         else:
             median = nums[mid]
 
         return median
-
