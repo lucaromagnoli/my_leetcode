@@ -43,12 +43,15 @@ nums is sorted in ascending order.
 
 
 """
+
+
 class Solution:
     def summaryRanges(self, nums: list[int]) -> list[str]:
         """
         :type nums: List[int]
         :rtype: List[str]
         """
+
         def append_to_range(start, end):
             if start == end:
                 ranges.append(f"{start}")
@@ -71,4 +74,3 @@ class Solution:
                 i += 1
             else:
                 return ranges
-

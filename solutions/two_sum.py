@@ -47,4 +47,3 @@ class Solution:
             if diff in num_to_index:
                 return [num_to_index[diff], i]
             num_to_index[num] = i
-

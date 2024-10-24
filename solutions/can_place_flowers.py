@@ -25,12 +25,14 @@ There are no two adjacent flowers in flowerbed.
 
 
 """
+
+
 class Solution:
     def canPlaceFlowers(self, flowerbed: list[int], flowers: int) -> bool:
         i = 0
         while i < len(flowerbed) and flowers > 0:
             if i == 0:
-                rng = flowerbed[i: i + 2]
+                rng = flowerbed[i : i + 2]
             elif i == len(flowerbed) - 1:
                 rng = flowerbed[i - 1 : i + 1]
             else:
@@ -43,4 +45,3 @@ class Solution:
                 i += 1
 
         return flowers == 0
-

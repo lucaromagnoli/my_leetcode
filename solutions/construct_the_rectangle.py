@@ -36,6 +36,8 @@ Constraints:
 1 <= area <= 107
 
 """
+
+
 class Solution:
     def constructRectangle(self, area: int) -> list[int]:
         length = area

@@ -47,6 +47,8 @@ nums is sorted in non-decreasing order.
 
 
 """
+
+
 class Solution:
     def removeDuplicates(self, nums):
         """
@@ -64,4 +66,3 @@ class Solution:
                 i -= 1
             i += 1
         return i
-

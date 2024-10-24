@@ -40,6 +40,8 @@ chars[i] is a lowercase English letter, uppercase English letter, digit, or symb
 
 
 """
+
+
 class Solution:
     def compress(self, chars: list[str]) -> int:
         n = len(chars)
@@ -68,4 +70,3 @@ class Solution:
 
         chars[:] = chars[n:]
         return len(chars)
-

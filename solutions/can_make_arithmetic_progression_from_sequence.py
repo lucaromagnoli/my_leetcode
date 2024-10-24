@@ -28,6 +28,8 @@ Constraints:
 
 
 """
+
+
 class Solution(object):
     def canMakeArithmeticProgression(self, arr: list[int]) -> bool:
         arr.sort()

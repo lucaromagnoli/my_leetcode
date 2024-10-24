@@ -33,6 +33,8 @@ It's guaranteed that you can reach nums[n - 1].
 
 
 """
+
+
 class Solution(object):
     def jump(self, nums):
         """
@@ -44,10 +46,14 @@ class Solution(object):
         end, far = 0, 0
         for i in range(n - 1):
             far = max(far, i + nums[i])
+            print(
+                f"Before if - i: {i} - far: {far} - end: {end} - smallest: {smallest}"
+            )
 
             if i == end:
                 smallest += 1
                 end = far
-            print(f"i: {i} - far: {far} - end: {end}")
+
+            print(f"After if - i: {i} - far: {far} - end: {end} - smallest:{smallest}")
 
         return smallest
